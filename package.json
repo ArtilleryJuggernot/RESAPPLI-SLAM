@@ -1,0 +1,23 @@
+{
+  "name": "resappli-slam",
+  "version": "1.0.0",
+  "description": "ResAPPLI",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrHugojuggernot/ResAPPLI-SLAM.git"
+  },
+  "author": "Hugo Maximillien Leo Antoine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrHugojuggernot/ResAPPLI-SLAM/issues"
+  },
+  "homepage": "https://github.com/MrHugojuggernot/ResAPPLI-SLAM#readme",
+  "devDependencies": {
+    "electron": "^22.0.3"
+  }
+}
