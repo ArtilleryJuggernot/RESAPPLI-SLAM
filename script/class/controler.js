@@ -1,8 +1,7 @@
 /**
  * TODO : 
  * 
- * - Créer la fonction update qui prend un ID de semaine
- *   et qui met a jour sur le tableau la semaine qui correspond
+ * 
  *
  * - Mettre le calendrier par défaut sur la semaine d'aujourd'hui
  * 
@@ -70,7 +69,7 @@ class Controleur {
         let day = document.getElementsByClassName("day");
         // Mise a jour des jours
         for (let index = 0; index < days_screen.length; index++) {
-            days_screen[index].innerHTML = semaine.SemaineDays[index].jour + " " + DicoMonth[semaine.SemaineDays[index].month];  
+            days_screen[index].innerHTML = semaine.SemaineDays[index].jour + " " + DicoMonth[semaine.SemaineDays[index].month] + "<br>" + semaine.SemaineDays[index].year;  
         }
         // Mise a jour des heures
         for (let index = 0; index < day.length; index++) {
@@ -84,12 +83,45 @@ class Controleur {
 }
     }
     
+
+    NextWeek()
+    {
+        console.log("launch!")
+        console.log(this.currentWeek);
+        if (this.currentWeek < 2006 && this.currentWeek >= 0)
+        {
+            console.log("next")
+            this.currentWeek += 1
+            let BoundedSetWeekScreen = this.SetWeekScreen.bind(this);
+            BoundedSetWeekScreen(this.currentWeek);
+        }
+    }
+            //this.SetWeekScreen(this.currentWeek);
+
+
+    PreviousWeek()
+    {
+        console.log("launch!")
+        console.log(this.currentWeek);
+        if (this.currentWeek > 0 && this.currentWeek < 2006)
+        {
+            console.log("previous")
+            this.currentWeek -= 1
+            let BoundedSetWeekScreen = this.SetWeekScreen.bind(this);
+            BoundedSetWeekScreen(this.currentWeek);
+            //this.SetWeekScreen(this.currentWeek);
+            
+        }
+            
+    }
+
     /**
      * 
      * @param {Calendrier} calendrier - le calendrier que le contrôleur va gérer
      */
     constructor(calendrier)
-    {   
+    {
+        this.currentWeek = 21;
         this.calendrier = calendrier;
         this.Event = [];
         // Variable Global 
@@ -114,8 +146,21 @@ class Controleur {
             console.log("build");
             jourSemaine.innerHTML += this.dayBuilder(jour);
         }
+        
+        // Affichage de la semaine
+        this.SetWeekScreen(50);     
 
-        this.SetWeekScreen(10);        
+        // Gestion des boutons
+        this.currentWeek = 21;
+        let prevWeek = document.getElementsByClassName("previous-week");
+        let nextWeek = document.getElementsByClassName("next-week");
+        
+        
+
+        prevWeek[0].addEventListener("click",this.PreviousWeek.bind(this));
+        nextWeek[0].addEventListener("click",this.NextWeek.bind(this));
+        
+    
     }
 
 }
