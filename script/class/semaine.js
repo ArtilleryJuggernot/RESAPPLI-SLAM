@@ -1,5 +1,4 @@
 import Jour from './jour.js';
-
 const Week = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
 const DicoMonth = {
     1 : 31,
@@ -40,27 +39,7 @@ function GetNbJour(month, year){
     return DicoMonth[month];
 }
 
-/**
- * 
- * @param {Jour} day Le jour actuel
- * @returns {Jour} Le jour de la semaine suivant
- */
-function GetNextDay(day) {
-    let MonthDay = GetNbJour(day.month, day.year);
-    let NextDateName = Week[( Week.indexOf(day.JourSemaine) + 1) % 7];
-    if(day.jour < MonthDay){
-        console.log()
-        return new Jour(NextDateName,day.jour + 1, day.month, day.year);
-        }
-    else {
-        if(day.month == 12){
-            return new Jour(NextDateName,1, 1, day.year + 1);
-        }
-        else{
-            return new Jour(NextDateName,1, day.month + 1, day.year);
-        }
-    }
-}
+
 
 
 
@@ -70,15 +49,56 @@ function GetNextDay(day) {
  * @param {int} SemaineID - Représente l'identifiant de la semaine
  */
 class Semaine {
+
+    /**
+    * 
+    * @param {Jour} day Le jour actuel
+    * @returns {Jour} Le jour de la semaine suivant
+    */
+   GetNextDay(day) {
+        let MonthDay = GetNbJour(day.month, day.year);
+        let NextDateName = Week[( Week.indexOf(day.JourSemaine) + 1) % 7];
+        if(day.jour < MonthDay){
+            console.log()
+            return new Jour(NextDateName,day.jour + 1, day.month, day.year);
+            }
+        else {
+            if(day.month == 12){
+                return new Jour(NextDateName,1, 1, day.year + 1);
+            }
+            else{
+                return new Jour(NextDateName,1, day.month + 1, day.year);
+            }
+        }
+    }
+
+
     constructor(SemaineID,startDay){
         this.SemaineID = SemaineID;
         this.SemaineDays = [];
         let currentDay = startDay;
         for (let index = 1; index <= 7; index++) {
             this.SemaineDays.push(currentDay);
-            currentDay = GetNextDay(currentDay);
+            currentDay = this.GetNextDay(currentDay);
         }
+    }
+
+
+
+    
+
+
+    GetFirstDay(){
+        return this.SemaineDays[0];
+    }
+
+    /**
+     * 
+     * @returns {Jour} Le dernier jour de la semaine
+     */
+    GetLastDay(){
+        return this.SemaineDays[6];
     }
 }
 
-export default Semaine
+export default Semaine;

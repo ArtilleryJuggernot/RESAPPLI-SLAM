@@ -1,0 +1,28 @@
+#currentWeek{
+    display: flex;
+    border: 4px solid #48ff00;
+
+}
+
+.day{
+    margin: 10px;
+    border: 10px solid black;
+    width: 14%;
+    text-align: center;
+    font-size: 1cm;
+}
+
+h1{
+    text-align: center;
+    color: red;
+}
+
+#btn-div{
+    display: flex;
+}
+
+.btn{
+    margin-left: 20%;
+    margin-right: 15%;
+    font-size: 1cm;
+}
