@@ -5,9 +5,10 @@
  */
 
 class Heure{
-    constructor(heure){
+    constructor(heure,content){
         this.heure = heure;
         this.taken = false;
+        this.content = content
     }
 }
 

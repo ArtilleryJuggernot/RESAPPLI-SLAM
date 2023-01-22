@@ -15,14 +15,24 @@ class Calendrier{
         }
     }
 
+    /**
+     * 
+     * @param {Jour} jour - Le jour à rechercher
+     * @returns {int} L'index de la semaine dans le calendrier dans laquelle le jour appartient
+     */
     GetSemaineID(jour){
-        let index = 0;
-        for (let i = 0; i < this.SemaineList.length; i++) { // Parcours des semaines
-            if (jour in this.SemaineList[i].SemaineDays){
-                return i;
+        let currentDay;
+        for (let SemaineIndex = 0; SemaineIndex < this.SemaineList.length; SemaineIndex++) { // Parcours des semaines
+            for (let dayIndex = 0; dayIndex < 7; dayIndex++) { // Parcours des jours dans la semaine
+                currentDay = this.SemaineList[SemaineIndex].SemaineDays[dayIndex];
+                if(jour.jour === currentDay.jour && jour.month === currentDay.month && jour.annee === currentDay.annee){
+                    console.log("find !");
+                    return SemaineIndex;
                 }
             }
         }
+        return null;
+    }
 }
 
 export default Calendrier;

@@ -26,3 +26,8 @@ h1{
     margin-right: 15%;
     font-size: 1cm;
 }
+
+.hour{
+    margin-bottom: 25px;
+    border: 10px solid blue;
+}

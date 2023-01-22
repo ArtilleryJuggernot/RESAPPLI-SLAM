@@ -9,6 +9,9 @@ import Heure from './heure.js'
  * @param {int} year - Numéro de l'année
  */
 class Jour {
+
+
+
     constructor(JourSemaine,jour,month,year) {
         this.JourSemaine = JourSemaine;
         this.jour = jour;
@@ -16,12 +19,8 @@ class Jour {
         this.year = year;
         this.ListHeure = [];
         for (let i = 8; i <= 18; i++) {
-            this.ListHeure.push(new Heure(i));
+            this.ListHeure.push(new Heure(i,"Libre"));
         }
-    }
-    ToString(){
-        return this.JourSemaine + " " + " "
-        + this.jour + " " + this.month + " " + this.year;
     }
     
 }
