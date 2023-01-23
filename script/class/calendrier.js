@@ -5,7 +5,7 @@ class Calendrier{
     constructor(){
         this.SemaineList = []
         this.HoursListReserved = [];
-        var myday = new Jour("Dimanche",1,1,2023)
+        var myday = new Jour("Lundi",16,1,2023)
         let mySemaine = new Semaine(0,myday);
         this.SemaineList.push(mySemaine);
         console.log(mySemaine);

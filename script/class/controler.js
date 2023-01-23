@@ -80,13 +80,11 @@ class Controleur {
                 let myHeureVal = myHeure.heure;
                 let myContent = myHeure.content;
                 hours[index2].innerHTML =  myHeureVal + "h - " + (myHeureVal+1) + "h" + "<br>" + myContent;
-                console.log("test");
                 if (myHeure.typetaken == "Formation"){
                     hours[index2].classList.add("Formation");
                     hours[index2].classList.remove("Interne");
                     hours[index2].classList.remove("Externe");
                     hours[index2].classList.remove("Libre");
-                    console.log("uwu");
 
                 }
                 if (myHeure.typetaken == "Interne"){
@@ -104,7 +102,7 @@ class Controleur {
 
                 }
                 if (myHeure.typetaken == ""){
-                    console.log("libre");
+              
                     hours[index2].classList.add("Libre");
                     hours[index2].classList.remove("Interne");
                     hours[index2].classList.remove("Externe");
@@ -117,11 +115,9 @@ class Controleur {
 
     NextWeek()
     {
-        console.log("launch!")
-        console.log(this.currentWeek);
         if (this.currentWeek < 2006 && this.currentWeek >= 0)
         {
-            console.log("next")
+         
             this.currentWeek += 1
             let BoundedSetWeekScreen = this.SetWeekScreen.bind(this);
             BoundedSetWeekScreen(this.currentWeek);
@@ -130,11 +126,11 @@ class Controleur {
 
     PreviousWeek()
     {
-        console.log("launch!")
-        console.log(this.currentWeek);
+      
+
         if (this.currentWeek > 0 && this.currentWeek < 2006)
         {
-            console.log("previous")
+         
             this.currentWeek -= 1
             let BoundedSetWeekScreen = this.SetWeekScreen.bind(this);
             BoundedSetWeekScreen(this.currentWeek);
@@ -254,6 +250,19 @@ checkOtherHoursTakenOther(day,t1,t2)
     }
 
 
+    /**
+     * Convertis la date d'aujourd'hui en Jour
+     * @returns le jour d'aujourd'hui selon la date du jour
+     */
+        GetTodayDate(){
+            let today = new Date();
+            let day = today.getDate();
+            let month = today.getMonth() + 1;
+            let year = today.getFullYear();
+            let todayDate = new Jour("Today",day,month,year);
+            return todayDate
+        }
+    
 
 
 
@@ -264,7 +273,7 @@ checkOtherHoursTakenOther(day,t1,t2)
      */
     constructor(calendrier)
     {
-        this.currentWeek = 21;
+        this.currentWeek =  calendrier.GetSemaineID(this.GetTodayDate());
         this.calendrier = calendrier;
         this.Event = [];
         // Variable Global 
@@ -286,7 +295,6 @@ checkOtherHoursTakenOther(day,t1,t2)
         // Initialisation du tableau
         let jourSemaine = document.getElementById("currentWeek");
         for (let jour = 1; jour <= 7; jour++) {
-            console.log("build");
             jourSemaine.innerHTML += this.dayBuilder(jour);
         }
         
