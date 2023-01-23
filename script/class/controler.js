@@ -5,12 +5,13 @@
  *
  * - Mettre le calendrier par défaut sur la semaine d'aujourd'hui
  * 
- * - Crée la grosse fonction main qui update tout
+ * - Crée la grosse fonction main qui updcheckday.ListHeure[index2].typetaken != "Formation"te tout
  * - Créer autant de classe que table MRD
  */ 
 import Jour from '../class/jour.js';
 import Semaine from '../class/semaine.js'
 import Calendrier from '../class/calendrier.js';
+import Heure from './heure.js';
 
 
 
@@ -37,7 +38,7 @@ class Controleur {
     data+=myNum
     let h = "";
     // Ajout des heures
-    for (let heure = 8; heure <= 18; heure++) {
+    for (let heure = 8; heure <= 17; heure++) {
         h = "<div class='hour day-"+n+"-h-"+heure+"'>"+heure+"</div>";
         data += h;
     } 
@@ -75,12 +76,42 @@ class Controleur {
         for (let index = 0; index < day.length; index++) {
             let hours = day[index].getElementsByClassName("hour");
             for (let index2 = 0; index2 < hours.length; index2++) {
-                let myHeure = semaine.SemaineDays[index].ListHeure[index2].heure;
-                let myContent = semaine.SemaineDays[index].ListHeure[index2].content;
-                hours[index2].innerHTML =  myHeure + "<br>" + myContent;
-    }
+                let myHeure = semaine.SemaineDays[index].ListHeure[index2];
+                let myHeureVal = myHeure.heure;
+                let myContent = myHeure.content;
+                hours[index2].innerHTML =  myHeureVal + "h - " + (myHeureVal+1) + "h" + "<br>" + myContent;
+                console.log("test");
+                if (myHeure.typetaken == "Formation"){
+                    hours[index2].classList.add("Formation");
+                    hours[index2].classList.remove("Interne");
+                    hours[index2].classList.remove("Externe");
+                    hours[index2].classList.remove("Libre");
+                    console.log("uwu");
 
-}
+                }
+                if (myHeure.typetaken == "Interne"){
+                    hours[index2].classList.add("Interne")
+                    hours[index2].classList.remove("Formation");
+                    hours[index2].classList.remove("Externe");
+                    hours[index2].classList.remove("Libre");
+                    
+                }
+                if (myHeure.typetaken == "Externe"){
+                    hours[index2].classList.add("Externe");
+                    hours[index2].classList.remove("Interne");
+                    hours[index2].classList.remove("Formation");
+                    hours[index2].classList.remove("Libre");
+
+                }
+                if (myHeure.typetaken == ""){
+                    console.log("libre");
+                    hours[index2].classList.add("Libre");
+                    hours[index2].classList.remove("Interne");
+                    hours[index2].classList.remove("Externe");
+                    hours[index2].classList.remove("Formation");
+                }
+            }
+        }
     }
     
 
@@ -96,8 +127,6 @@ class Controleur {
             BoundedSetWeekScreen(this.currentWeek);
         }
     }
-            //this.SetWeekScreen(this.currentWeek);
-
 
     PreviousWeek()
     {
@@ -114,6 +143,120 @@ class Controleur {
         }
             
     }
+
+
+    /**
+     * Change le motif d'une heure en fonction du jour
+     * 
+     * @param {Jour} day - Jour auquel l'heure est a modifier
+     * @param {int} heure - Heure à modifier (valeur de 8-18)
+     * @param {string} motif - Le modif de la modification
+     */
+    changeHour(day,heure,motif,typetaken){
+        let mysemaine = this.calendrier.GetSemaineID(day);
+        for (let index = 0; index < this.calendrier.SemaineList[mysemaine].SemaineDays.length; index++) {
+            let checkday = this.calendrier.SemaineList[mysemaine].SemaineDays[index];
+            if(checkday.jour == day.jour && checkday.month == day.month && checkday.year == day.year){
+                this.calendrier.SemaineList[mysemaine].SemaineDays[index].ListHeure[heure - 8].content = motif
+                this.calendrier.SemaineList[mysemaine].SemaineDays[index].ListHeure[heure - 8].taken = true;
+                this.calendrier.SemaineList[mysemaine].SemaineDays[index].ListHeure[heure - 8].typetaken = typetaken;
+                this.SetWeekScreen(this.currentWeek);
+                
+            }
+
+            }     
+        }
+    
+
+        /**
+         *  Similaire à changeHour() mais fonctionne sur une séquence d'heure [h1,h2]
+         * 
+         * @param {Jour} day 
+         * @param {int} h1 
+         * @param {int} h2 
+         * @param {string} motif 
+         */
+    changeSeq(day,h1,h2,motif,typetaken){
+        for (let index = h1; index <= h2; index++) {
+            this.changeHour(day,index,motif,typetaken);
+        }
+    }
+
+
+
+    /**
+     * Vérifie qu'une formation est placable dans le calendrier si et seulement si il n'y a pas
+     * d'autre évennement (Interne, Externe) dans la plage horare. 
+     * @param {Jour} day 
+     * @param {int} mode 
+     * @returns 
+     */
+    checkOtherHoursTakenFormation(day,mode) // mode = 1 9-12h , mode = 2 14-17h
+    {
+        let t1 = 0
+        let t2 = 4;
+        if(mode == 2)
+            t1,t2 = 5,10;
+        let mysemaine = this.calendrier.GetSemaineID(day);
+        for (let index = 0; index < this.calendrier.SemaineList[mysemaine].SemaineDays.length; index++) {
+            let checkday = this.calendrier.SemaineList[mysemaine].SemaineDays[index];
+            if(checkday.jour == day.jour && checkday.month == day.month && checkday.year == day.year){
+                for (let index2 = t1; index2 <= t2; index2++) {
+                    if(checkday.ListHeure[index2].typetaken != "")  // Soit un Interne ou Externe
+                        return false;
+                }
+            }
+        }
+        return true;
+}
+
+
+checkOtherHoursTakenOther(day,t1,t2) 
+{
+    let mysemaine = this.calendrier.GetSemaineID(day);
+    for (let index = 0; index < this.calendrier.SemaineList[mysemaine].SemaineDays.length; index++) {
+        let checkday = this.calendrier.SemaineList[mysemaine].SemaineDays[index];
+        if(checkday.jour == day.jour && checkday.month == day.month && checkday.year == day.year){
+            for (let index2 = t1; index2 <= t2; index2++) {
+                if(checkday.ListHeure[index2].typetaken != "Formation" && checkday.ListHeure[index2].typetaken != "")  // Soit un Interne ou Externe
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+    /**
+     * Vérifie puis définie une formation selon changeSeq()
+     * 
+     * @param {Jour} day 
+     * @param {int} demi_journée - 1 pour le matin (9-12h) et 2 pour l'après midi (14-17h)
+     * @param {string} motif 
+     */
+    setFormation(day,demi_journée,motif)
+    {
+
+        if (this.checkOtherHoursTakenFormation(day,demi_journée)){
+        if(demi_journée == 1)
+            this.changeSeq(day,9,12,motif,"Formation");
+        else
+            this.changeSeq(day,14,17,motif,"Formation");
+    }
+    }
+
+    setInterneMeeting(day,h1,h2,motif){
+        this.changeSeq(day,h1,h2,motif,"Interne");
+    }
+
+    setExterneMeeting(day,h1,h2,motif){
+        this.changeSeq(day,h1,h2,motif,"Externe");
+    }
+
+
+
+
+
 
     /**
      * 
@@ -148,10 +291,9 @@ class Controleur {
         }
         
         // Affichage de la semaine
-        this.SetWeekScreen(50);     
+        this.SetWeekScreen(this.currentWeek);     
 
         // Gestion des boutons
-        this.currentWeek = 21;
         let prevWeek = document.getElementsByClassName("previous-week");
         let nextWeek = document.getElementsByClassName("next-week");
         
@@ -163,6 +305,6 @@ class Controleur {
     
     }
 
-}
 
+}
 export default Controleur;

@@ -4,7 +4,8 @@ import Jour from "./jour.js";
 class Calendrier{
     constructor(){
         this.SemaineList = []
-        var myday = new Jour("Mercredi",1,1,2020)
+        this.HoursListReserved = [];
+        var myday = new Jour("Dimanche",1,1,2023)
         let mySemaine = new Semaine(0,myday);
         this.SemaineList.push(mySemaine);
         console.log(mySemaine);

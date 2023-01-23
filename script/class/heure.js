@@ -8,6 +8,7 @@ class Heure{
     constructor(heure,content){
         this.heure = heure;
         this.taken = false;
+        this.typetaken = ""; //  Formation, Interne, Externe"
         this.content = content
     }
 }

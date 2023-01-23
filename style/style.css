@@ -31,3 +31,19 @@ h1{
     margin-bottom: 25px;
     border: 10px solid blue;
 }
+
+.Formation{
+    border-color: red;
+}
+
+.Libre{
+    border-color: blue;
+}
+
+.Interne{
+    border-color: green;
+}
+
+.Externe{
+    border-color: fuchsia;
+}

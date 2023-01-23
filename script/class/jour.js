@@ -10,19 +10,16 @@ import Heure from './heure.js'
  */
 class Jour {
 
-
-
     constructor(JourSemaine,jour,month,year) {
         this.JourSemaine = JourSemaine;
         this.jour = jour;
         this.month = month;
         this.year = year;
         this.ListHeure = [];
-        for (let i = 8; i <= 18; i++) {
+        for (let i = 8; i <= 17; i++) { // <= 18
             this.ListHeure.push(new Heure(i,"Libre"));
         }
     }
-    
 }
 
 export default Jour;
