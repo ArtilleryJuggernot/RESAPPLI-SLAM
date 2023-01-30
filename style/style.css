@@ -17,7 +17,7 @@ h1{
     color: red;
 }
 
-#btn-div{
+#btn-semaine-div{
     display: flex;
     
 }
@@ -65,8 +65,9 @@ border: solid 2px #0066cc;
 
 
 .hour{
-    margin-bottom: 25px;
+    margin-bottom: 50px;
     border: 10px solid blue;
+    
 }
 
 .Formation{
@@ -88,4 +89,67 @@ border: solid 2px #0066cc;
 #prixy-logo-footer{
     width: 100px;
     height: 100px;
+}
+
+#popup-res{
+    visibility: hidden;
+}
+
+#calendrier{
+    display: flex;
+}
+
+.myMenuRes{
+    height: 50%;
+}
+
+#main{
+    display: flex;
+}
+
+#menu{
+    background-color: #143053;
+    width: 10%;
+}
+
+.menu{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    margin-top: 20px;
+    font-size: 1cm;
+    font-family: Playfair Display SC;
+    font-weight: 900;
+    color: #fff;
+    background-color: #3f77a3;
+    padding: 10px 30px;
+    border: solid #143053 2px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 50px;
+    transition : 469ms;
+    transform: translateY(0);
+    align-items: center;
+    cursor: pointer;    
+}
+
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
+#all-bouton{
+    display: flex;
+}
+
+label{
+    font-size: Large;
+}
+
+input{
+    font-size: Large;
 }

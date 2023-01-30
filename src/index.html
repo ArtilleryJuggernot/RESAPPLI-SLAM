@@ -5,21 +5,28 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="../style/style.css">
-    <title>ResAPPLI - Prixy</title>
+    <title>ResAPPLI - Planning</title>
   </head>
   <body>
-    <h1> Bienvenue dans ResAPPLI !</h1>
-    <div id="btn-div">
+    <h1> Bienvenue dans ResAPPLI ! (Page de planning)</h1>
+    <div id="btn-semaine-div">
       <div class="btn-space">
         <button class="btn previous-week">Semaine précédente</button>
       </div>
     <div class="btn-space">
         <button class="btn next-week">Semaine suivante</button>
     </div>
-    
   </div>
 
+
     <div id="calendrier">
+
+
+      <div id="menu">
+
+        <a href="./reservation.html" class="menu">Page Réservation</a>
+        <a href="./index.html" class="menu">Page planning</a>
+      </div>
 
       <div id="currentWeek">
         <!-- Le contenu sera automatiquement ajouté en JS avec la classe Controler-->
@@ -36,4 +43,5 @@
   </body>
   <!-- Script qui permet de "crée les jours dans la page html"-->
   <script type="module" src="../script/web_script/titlescreen.js"></script>
+  <script type="module" src="../script/web_script/menu.js"></script>
   </html>

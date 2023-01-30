@@ -1,9 +1,13 @@
-const { app, BrowserWindow } = require('electron')
-const path = require('path')
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 
 function createWindow () {
   const win = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+  },
     width: 800,
     height: 600,
   })
@@ -27,3 +31,5 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+//export default fs  = require('fs');

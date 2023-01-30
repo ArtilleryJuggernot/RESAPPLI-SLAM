@@ -19,8 +19,6 @@
  * @param {int} h2 - Heure de fin de la réservation
  * @param {String} raison - Raison de la réservation
  * @param {String} type - Type de réservation (Interne, Externe, Formation)
- * 
- * @argument {String} statut - Statut de la réservation (En attente, Acceptée)
  */
 class Reservation{
     constructor(IdRerservation,Client,Adresse_Postal,Email,Telephone,NbPersonne,Jour,h1,h2,raison,type){
@@ -37,7 +35,6 @@ class Reservation{
         this.type = type;
         this.statut = "Active" // (En attente, Accepté)
     }
+    
 }
-
-
-export default Heure;
+export default Reservation;
