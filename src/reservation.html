@@ -21,8 +21,8 @@
                   <button id="btn-ajt-formation-btn">Ajouter une réservation Formation</button>
                 
                   <div id="popup-res">
-                    <form id="form-formation" method="POST" enctype="multipart/form-data"> <!-- -->
-                      <label for="client_name">Nom du client:</label>
+                    <form id="form-formation" enctype="multipart/form-data"> <!-- -->
+                      <label for="client_name">Nom du formateur:</label>
                       <input type="text" id="client_name" name="client_name" required><br><br>
                       
                       <label for="client_email">Adresse mail formateur :</label>
@@ -31,9 +31,13 @@
                       <label for="formation_name">Nom de la formation :</label>
                       <input type="text" id="formation_name" name="formation_name" required><br><br>
             
-                      <label for="client_phone">Telephone formateur :</label>
+                      <label for="client_phone">Telephone du formateur :</label>
                       <input type="text" id="client_phone" name="client_phone" required><br><br>
             
+                      <label for="client_address">Adresse du formateur :</label>
+                      <input type="text" id="client_address" name="client_address" required><br><br>
+
+
                       <label for="formation_date">Date de la formation date:</label>
                       <input type="date" id="formation_date" name="formation_date"
                       value=""
@@ -44,9 +48,9 @@
   
                       
 
-  <select name="horaire-selector" id="horaire-selector">
-      <option value="">9h -> 13h</option>
-      <option value="dog">14h -> 17h</option>
+  <select name="horaire_selector" id="horaire-selector">
+      <option value="1">9h -> 13h</option>
+      <option value="2">14h -> 17h</option>
   </select>
             
   <label for="nb_personne">Nombre de personnes présente :</label>
@@ -54,7 +58,7 @@
             
             
             
-                      <input type="submit" value="Envoyer">
+                    <button type="submit" >Envoyer</button>
                     </form>
                   </div>
                   
