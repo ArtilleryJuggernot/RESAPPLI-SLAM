@@ -232,13 +232,10 @@ checkOtherHoursTakenOther(day,t1,t2)
      */
     setFormation(day,demi_journée,motif)
     {
-
-        if (this.checkOtherHoursTakenFormation(day,demi_journée)){
         if(demi_journée == 1)
             this.changeSeq(day,9,12,motif,"Formation");
         else
             this.changeSeq(day,14,17,motif,"Formation");
-    }
     }
 
     setInterneMeeting(day,h1,h2,motif){

@@ -1,122 +1,172 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-        <link rel="stylesheet" href="../style/style.css">
-    </head>
-    <body>
-        <h1> Bienvenue dans ResAPPLI ! (Page de réservation)</h1>
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="../style/style.css">
+  </head>
+
+  <body>
+    <h1> Bienvenue dans ResAPPLI ! (Page de réservation)</h1>
     
-    
-
-        <div id="main">
-
-            <div id="menu" class="myMenuRes">
-                <a href="./reservation.html" class="menu">Page Réservation</a>
-                <a href="./index.html" class="menu">Page planning</a> 
-              </div>
-
-              <div id="all-bouton">
-                <div id="btn-ajt-formation">
-                  <button id="btn-ajt-formation-btn">Ajouter une réservation Formation</button>
-                
-                  <div id="popup-res">
-                    <form id="form-formation" enctype="multipart/form-data"> <!-- -->
-                      <label for="client_name">Nom du formateur:</label>
-                      <input type="text" id="client_name" name="client_name" required><br><br>
-                      
-                      <label for="client_email">Adresse mail formateur :</label>
-                      <input type="email" id="client_email" name="client_email" required><br><br>
-                      
-                      <label for="formation_name">Nom de la formation :</label>
-                      <input type="text" id="formation_name" name="formation_name" required><br><br>
-            
-                      <label for="client_phone">Telephone du formateur :</label>
-                      <input type="text" id="client_phone" name="client_phone" required><br><br>
-            
-                      <label for="client_address">Adresse du formateur :</label>
-                      <input type="text" id="client_address" name="client_address" required><br><br>
-
-
-                      <label for="formation_date">Date de la formation date:</label>
-                      <input type="date" id="formation_date" name="formation_date"
-                      value=""
-                      min="2023-01-16"
-                       max="2061-7-3" required>
-  
-                       <label for="horaire-select">Choisissez votre horaire</label>
-  
-                      
-
-  <select name="horaire_selector" id="horaire-selector">
-      <option value="1">9h -> 13h</option>
-      <option value="2">14h -> 17h</option>
-  </select>
-            
-  <label for="nb_personne">Nombre de personnes présente :</label>
-  <input type="number" id="nb_personne" name="nb_personne" min="1" max="30"><br><br>
-            
-            
-            
-                    <button type="submit" >Envoyer</button>
-                    </form>
-                  </div>
-                  
-                </div>
-              
-              
-                <div id="btn-ajt-interne">
-                  <button id="btn-ajt-interne-btn">Ajouter une réservation Interne</button>
-                
-                  <div id="popup-res">
-                    <form method="POST" enctype="multipart/form-data" onsubmit="return check('formation')">
-                      <label for="client_name">Nom du client:</label>
-                      <input type="text" id="client_name" name="client_name"><br><br>
-                      
-                      <label for="client_email">Adresse mail formateur :</label>
-                      <input type="email" id="client_email" name="client_email"><br><br>
-                      
-                      <label for="formation_name">Nom de la réunion Interne :</label>
-                      <input type="text" id="formation_name" name="formation_name"><br><br>
-            
-                      <label for="client_phone">Telephone formateur :</label>
-                      <input type="text" id="client_phone" name="client_phone"><br><br>
-            
-                      <label for="formation_date">Date de la formation date:</label>
-                      <input type="date" id="formation_date" name="formation_date"
-                      value=""
-                      min="2023-01-16"
-                       max="2061-7-3">
-  
-                       <label for="horaire-select">Choisissez votre horaire</label>
-  
-  <select name="horaire-selector" id="horaire-selector">
-      <option value="">9h -> 13h</option>
-      <option value="dog">14h -> 17h</option>
-  </select>
-            
-            
-            
-            
-            
-                      <input type="submit" value="Envoyer">
-                    </form>
-                  </div>
-                  
-                </div>
-              
-              
-              
-              </div>
-
-              
-
-        </div>
-
+    <div id="main">
+      <div id="menu" class="myMenuRes">
+        <a href="./reservation.html" class="menu">Page Réservation</a>
+        <a href="./index.html" class="menu">Page planning</a>
+      </div>
+      
+      <div id="all-bouton">
         
-    
-    </body>
-    <script type="module" src="../script/web_script/menu.js"></script>
-    <script type="module" src="../script/web_script/reservation.js"></script>
-</html>
+        <div id="btn-ajt-formation">
+          <button id="btn-ajt-formation-btn">Ajouter une réservation Formation</button>
+          <div id="popup-res-formation">
+            
+            <form id="form-formation" enctype="multipart/form-data">
+              <!-- -->
+              <label for="client_name">Nom du formateur:</label>
+              <input type="text" id="client_name" name="client_name" required>
+              
+              <br>
+              <br>
 
+              <label for="formation_name">Nom de la formation :</label>
+              <input type="text" id="formation_name" name="formation_name" required>
+              
+              <br>
+              <br>
+              
+              <label for="formation_date">Date de la formation date:</label>
+              <input type="date" id="formation_date" name="formation_date" value="" min="2023-01-16" max="2061-7-3" required>
+              
+              <label for="horaire-select">Choisissez votre horaire</label>
+              <select name="horaire_selector" id="horaire-selector">
+                <option value="1">9h -> 13h</option>
+                <option value="2">14h -> 17h</option>
+              </select>
+              
+              <button type="submit">Envoyer</button>
+            </form>
+          
+          </div>
+        
+        </div>
+        
+        <div id="btn-ajt-interne">
+          <button id="btn-ajt-interne-btn">Ajouter une réservation Interne</button>
+          <div id="popup-res-interne">
+            <form id="form-interne" enctype="multipart/form-data">
+              
+              <label for="interne_name">Nom de la Réunion Interne :</label>
+              <input type="text" id="formation_name" name="interne_name" required>
+              <br>
+              <br>
+              <label for="interne_date">Date de la Réunion Interne :</label>
+              <input type="date" id="formation_date" name="interne_date" value="" min="2023-01-16" max="2061-7-3" required>
+              
+              <label for="horaire-select">Choisissez votre horaire de début</label>
+              <select name="interne_h1" id="horaire-selector">
+                <option value="8">8h</option>
+                <option value="9">9h</option>
+                <option value="10">10h</option>
+                <option value="11">11h</option>
+                <option value="12">12h</option>
+                <option value="13">13h</option>
+                <option value="14">14h</option>
+                <option value="15">15h</option>
+                <option value="16">16h</option>
+                <option value="17">17h</option>
+                <option value="18">18h</option>
+              </select>
+
+
+              <label for="horaire-select">Choisissez votre horaire de fin</label>
+              <select name="interne_h2" id="horaire-selector">
+                <option value="8">8h</option>
+                <option value="9">9h</option>
+                <option value="10">10h</option>
+                <option value="11">11h</option>
+                <option value="12">12h</option>
+                <option value="13">13h</option>
+                <option value="14">14h</option>
+                <option value="15">15h</option>
+                <option value="16">16h</option>
+                <option value="17">17h</option>
+                <option value="18">18h</option>
+              </select>
+              
+              <button type="submit">Envoyer</button>
+            </form>
+          </div>
+        </div>
+        <div id="btn-ajt-externe">
+          <button id="btn-ajt-externe-btn">Ajouter une réservation Externe</button>
+          <div id="popup-res-externe">
+            <form id="form-externe" enctype="multipart/form-data">
+              <!-- -->
+              <label for="externe_client_name">Nom du Client:</label>
+              <input type="text" id="client_name" name="externe_client_name" required>
+              <br>
+              <br>
+              <label for="externe_client_email">Adresse mail du client :</label>
+              <input type="email" id="client_email" name="externe_client_email" required>
+              <br>
+              <br>
+              <label for="externe_reunion_name">Motif de réservation :</label>
+              <input type="text" id="formation_name" name="externe_reunion_name" required>
+              <br>
+              <br>
+              <label for="externe_client_phone">Telephone du client :</label>
+              <input type="text" id="client_phone" name="externe_client_phone" required>
+              <br>
+              <br>
+              <label for="externe_client_addresse">Adresse du client :</label>
+              <input type="text" id="client_address" name="externe_client_addresse" required>
+              <br>
+              <br>
+              <label for="externe_date">Date de réservation:</label>
+              <input type="date" id="formation_date" name="externe_date" value="" min="2023-01-16" max="2061-7-3" required>
+              
+              <label for="horaire-select">Choisissez votre horaire de début</label>
+              <select name="externe_h1" id="horaire-selector">
+                <option value="8">8h</option>
+                <option value="9">9h</option>
+                <option value="10">10h</option>
+                <option value="11">11h</option>
+                <option value="12">12h</option>
+                <option value="13">13h</option>
+                <option value="14">14h</option>
+                <option value="15">15h</option>
+                <option value="16">16h</option>
+                <option value="17">17h</option>
+                <option value="18">18h</option>
+              </select>
+
+
+              <label for="horaire-select">Choisissez votre horaire de fin</label>
+              <select name="externe_h2" id="horaire-selector">
+                <option value="8">8h</option>
+                <option value="9">9h</option>
+                <option value="10">10h</option>
+                <option value="11">11h</option>
+                <option value="12">12h</option>
+                <option value="13">13h</option>
+                <option value="14">14h</option>
+                <option value="15">15h</option>
+                <option value="16">16h</option>
+                <option value="17">17h</option>
+                <option value="18">18h</option>
+              </select>
+
+              <label for="nb_personne">Nombre de personnes présente :</label>
+              <input type="number" id="nb_personne" name="nb_personne" min="1" max="30">
+              <br>
+              <br>
+              <button type="submit">Envoyer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+  <script type="module" src="../script/web_script/reservation.js"></script>
+</html>
