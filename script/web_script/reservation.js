@@ -142,7 +142,7 @@ function parse_externe(form){
     console.log(ReunionDate)
     let ReunionNbPersonne = Number(form.get("nb_personne"));
     let ReunionHoraire1 = Number(form.get("externe_h1"));    
-    let ReunionHoraire2 = Number(form.get("externer_h2"));
+    let ReunionHoraire2 = Number(form.get("externe_h2"));
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X",split_date[2],split_date[1],split_date[0])
     let myRes = new Reservation(ID,ClientNom,ClientAdresse,ClientEmail,ClientTelephone,ReunionNbPersonne,ReunionDate,ReunionHoraire1,ReunionHoraire2,ReunionNom,"Externe");
