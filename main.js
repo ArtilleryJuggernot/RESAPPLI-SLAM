@@ -6,12 +6,11 @@ function createWindow () {
     width: 800,
     height: 600,
     autoHideMenuBar: true,
-    icon: __dirname +  'icon.ico',
+    icon:'src/icon.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-
   win.loadFile('index.html')
 }
 
