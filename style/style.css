@@ -154,3 +154,9 @@ input{
     font-size: Large;
 }
 
+
+#separator{
+    height: 1px;
+background: black;
+display: flex;
+}
