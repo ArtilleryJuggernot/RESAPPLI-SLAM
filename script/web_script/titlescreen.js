@@ -35,7 +35,7 @@ fs.readdirSync(RESFolder).forEach(file => {
             parseInt(nextRES.Jour.month,10),
             parseInt(nextRES.Jour.year,10));
         
-            var ResHoraire;
+        var ResHoraire;
         var ResMotif;
         if (nextRES.HeureDepart == 9)
             ResHoraire = 1;
