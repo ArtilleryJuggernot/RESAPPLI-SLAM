@@ -221,9 +221,10 @@ display: flex;
 
 #reserv_list{
     display: flex;
-    flex: 0 0 30%;
+    flex: 0 0 20%;
     flex-wrap: wrap;
     list-style: none;
+    width: 100%;
 }
 
 .res_dis{
@@ -235,7 +236,7 @@ display: flex;
     padding: 10px;
     list-style: none;
     flex-wrap: wrap;
-    flex: 0 0 30%;
+    flex: 0 0 20%;
 }
 
 #content{
