@@ -8,9 +8,9 @@ function createWindow () {
       nodeIntegration: true,
       autoHideMenuBar: true,
       contextIsolation: false,
-      icon : 'icon.ico',
+      icon : 'test/icon.ico',
   },
-    width: 800,
+    width: 1200,
     height: 600,
   })
 
