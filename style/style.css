@@ -1,6 +1,6 @@
 #main{
     width: 100%;
-    display: flex;
+    display: block;
 }
 
 #aside{
@@ -227,7 +227,8 @@ display: flex;
 }
 
 .res_dis{
-    border: 1px solid black;
+    border-radius: 10px;
+    border: 2px solid rgb(181, 181, 181);
     width: 100%;
     height: 100%;
     margin: 10px;
@@ -340,3 +341,14 @@ hr {
     }
 }
 
+h3{
+    font-family: Poppins Bold;
+    font-size: 15px;
+}
+
+p{
+    font-family: Poppins Regular;
+    font-size: 13px;
+    color: #595959;
+    
+}
