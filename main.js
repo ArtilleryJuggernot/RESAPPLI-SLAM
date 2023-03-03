@@ -5,11 +5,12 @@ function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    autoHideMenuBar: true,
+    icon:'/src/icon.ico',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-
   win.loadFile('index.html')
 }
 
