@@ -7,17 +7,17 @@
   </head>
 
   <body>
-    
     <div id="main">
       <div id="menu" class="myMenuRes">
         <a href="./reservation.html" class="menu">Page Réservation</a>
         <a href="./index.html" class="menu">Page planning</a>
       </div>
       
+      <div id="content">
       <div id="all-bouton">
         
-        <div id="btn-ajt-formation">
-          <button id="btn-ajt-formation-btn">Ajouter une réservation Formation</button>
+        <div class="btn-container-res" id="btn-ajt-formation">
+          <button class="res-btn" id="btn-ajt-formation-btn">Ajouter une réservation <br />  Formation</button>
           <div id="popup-res-formation">
             
             <form id="form-formation" enctype="multipart/form-data">
@@ -50,8 +50,8 @@
         
         </div>
         
-        <div id="btn-ajt-interne">
-          <button id="btn-ajt-interne-btn">Ajouter une réservation Interne</button>
+        <div class="btn-container-res" id="btn-ajt-interne">
+          <button class="res-btn" id="btn-ajt-interne-btn">Ajouter une réservation <br />  Interne</button>
           <div id="popup-res-interne">
             <form id="form-interne" enctype="multipart/form-data">
               
@@ -97,8 +97,8 @@
             </form>
           </div>
         </div>
-        <div id="btn-ajt-externe">
-          <button id="btn-ajt-externe-btn">Ajouter une réservation Externe</button>
+        <div class="btn-container-res" id="btn-ajt-externe">
+          <button class="res-btn" id="btn-ajt-externe-btn">Ajouter une réservation <br />  Externe</button>
           <div id="popup-res-externe">
             <form id="form-externe" enctype="multipart/form-data">
               <!-- -->
@@ -164,19 +164,20 @@
             </form>
           </div>
         </div>
+      
+      
       </div>
+      <hr>
 
-    </div>
-    <div id="separator"></div>
-    <div id="reserv_list_section">
-
-      <h1> Liste des réservations</h1>
-
-      <div id="reserv_list">
-        
+      <div id="reserv_list_section">
+  
+        <h1> Liste des réservations</h1>
+  
+        <div id="reserv_list"></div>
       </div>
-
     </div>
+  </div>
+    
 
 
 
