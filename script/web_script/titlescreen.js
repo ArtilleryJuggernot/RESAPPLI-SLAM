@@ -12,7 +12,6 @@ var MyControleur = new Controleur(Mycalendrier);
 MyControleur.setInterneMeeting(myday,8,8,"Réunion en Interne");
 */
 
-console.log(Mycalendrier);
 
 //MyControleur.setExterneMeeting(new Jour("X",2,2,2023),15,17,"Meeting BK");
 //MyControleur.setFormation(new Jour("X",1,2,2023),2,"Formation etoile");
@@ -22,19 +21,18 @@ console.log(Mycalendrier);
 
 
 const RESFolder = './reservation/';
-console.log("reading file");
 fs.readdirSync(RESFolder).forEach(file => {
-    console.log("inside");
+    console.log("reading path res");
     let nextRES = JSON.parse(fs.readFileSync(RESFolder+file, 'utf8'));
-    if(nextRES.type == "Formation"){
-        // Jour
-        // Horaire (1 ou 2)
-        // motif
-        var ResJour = new Jour("X",
+
+    console.log(nextRES.type);
+
+    var ResJour = new Jour("X",
             parseInt(nextRES.Jour.jour,10),
             parseInt(nextRES.Jour.month,10),
             parseInt(nextRES.Jour.year,10));
-        
+    if(nextRES.type == "Formation"){
+        console.log("res formation");
         var ResHoraire;
         var ResMotif;
         if (nextRES.HeureDepart == 9)
@@ -46,35 +44,13 @@ fs.readdirSync(RESFolder).forEach(file => {
         MyControleur.setFormation(ResJour,ResHoraire,ResMotif);
     }
     if (nextRES.type == "Externe"){
-        console.log("externe")
-        // Jour
-        // Horaire1 et 2
-        // motif
-        var ResJour = new Jour("X",
-            parseInt(nextRES.Jour.jour,10),
-            parseInt(nextRES.Jour.month,10),
-            parseInt(nextRES.Jour.year,10));
-        
+        console.log("Reu externe");
         var ResHoraire = [parseInt(nextRES.HeureDepart,10),parseInt(nextRES.HeureFin,10)];
         var ResMotif = nextRES.Raison
-        console.log(nextRES.HeureDepart);
-        console.log(nextRES.HeureFin);
-
-        console.log(ResJour);
-        console.log(ResHoraire);
-        console.log(ResMotif);
         MyControleur.setExterneMeeting(ResJour,ResHoraire[0],ResHoraire[1],ResMotif);
     }   
     if (nextRES.type == "Interne"){
-        console.log("interne")
-        // Jour
-        // Horaire1 et 2
-        // motif
-        var ResJour = new Jour("X",
-            parseInt(nextRES.Jour.jour,10),
-            parseInt(nextRES.Jour.month,10),
-            parseInt(nextRES.Jour.year,10));
-        
+        console.log("Reu interne");
         var ResHoraire = [parseInt(nextRES.HeureDepart,10),parseInt(nextRES.HeureFin,10)];
         var ResMotif = nextRES.Raison
 

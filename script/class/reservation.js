@@ -22,20 +22,52 @@
  * @param {String} equipement - Equipement de la réservation
  */
 class Reservation{
+
+    /**
+     * @param {*} attribut - Attribut à vérifier
+     */
+    CheckNull(attribut){
+        return attribut == null || attribut == undefined;
+    }
+
     constructor(IdRerservation,Client,Adresse_Postal,Email,Telephone,NbPersonne,Jour,h1,h2,raison,type,equipement){
         this.ID_reservation = IdRerservation
-        this.Client = Client;
-        this.Adresse_Postal = Adresse_Postal
-        this.Email = Email;
-        this.Telephone = Telephone;
-        this.NbPersonne = NbPersonne;
+        
+        if(this.CheckNull(Client))
+            this.Client = "";
+        else
+            this.Client = Client;
+        if(this.CheckNull(Adresse_Postal))
+            this.Adresse_Postal = "";
+        else
+            this.Adresse_Postal = Adresse_Postal
+        
+        if(this.CheckNull(Email))
+            this.Email = "";
+        else
+            this.Email = Email;
+        
+        if(this.CheckNull(Telephone))
+            this.Telephone = "";
+        else
+            this.Telephone = Telephone;
+        
+        if(this.CheckNull(NbPersonne))
+            this.NbPersonne = 0;
+        else
+            this.NbPersonne = NbPersonne;
+        
         this.Jour = Jour;
         this.HeureDepart = h1;
         this.HeureFin = h2;
         this.Raison = raison;
         this.type = type;
         this.statut = "Active" // (En attente, Accepté)
-        this.equipement = equipement;
+        
+        if(this.CheckNull(equipement))
+            this.equipement = "";
+        else
+            this.equipement = equipement;
     }
     
 }

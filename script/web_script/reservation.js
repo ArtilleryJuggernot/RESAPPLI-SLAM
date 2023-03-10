@@ -96,7 +96,7 @@ function parse_formation(form) {
 
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
-    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Formation","Pas d'équipement");
+    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Formation","Aucun");
  
     fs_utils.save_RES_JSON(myRes);
 }
@@ -111,7 +111,7 @@ function parse_interne(form) {
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, null, null, null, null, null, ReunionDate,
-        ReunionHoraire1, ReunionHoraire2, ReunionNom, "Interne","Pas d'équipement");
+        ReunionHoraire1, ReunionHoraire2, ReunionNom, "Interne","Aucun");
 
     fs_utils.save_RES_JSON(myRes);
 }
@@ -182,7 +182,7 @@ function input_html_generator(Content,Type,ID,initialValue){
 /**
  * Renvoie une date du code HTML pour le calendrier
  * 10/02/2023 -> 2023-02-10
- * @param {string} date 
+ * @param {string} date  
  */
 function htmlDate_to_Date(date){
     let split_date = date.split("/");
@@ -217,6 +217,12 @@ function Heure_input_html_generator(ID,initialValue,timeline){
     return my_content;
 }
 
+
+function NoSpaceString(str){
+    str = str.replace(" ", '');
+    return str;
+}
+
 /**
  * 
  * @param {*} indexHTML - Index HTML de la réservation
@@ -224,16 +230,13 @@ function Heure_input_html_generator(ID,initialValue,timeline){
  */
 function confirm_RES_modification(indexHTML,ID)
 {
-    console.log("confirm_RES_modification");
-
-    console.log(indexHTML);
+   
 
     let head = document.getElementById("res_display_"+indexHTML);
-    console.log(head);
     
     let res_name = head.children['res_name_'+indexHTML].children[1].value;
     let res_date = head.children['res_date_'+indexHTML].children[1].value;
-    let res_nb_personne = head.children['res_nbpersonne_'+indexHTML].children[1].value;
+    let res_nb_personne = Number(head.children['res_nbpersonne_'+indexHTML].children[1].value);
     let res_client = head.children['res_client_'+indexHTML].children[1].value;
     let res_email = head.children['res_email_'+indexHTML].children[1].value;
     let res_telephone = head.children['res_telephone_'+indexHTML].children[1].value;
@@ -244,15 +247,14 @@ function confirm_RES_modification(indexHTML,ID)
     let h1 = Number(head.children['res_horaire_'+indexHTML].children['horaire-selector_1'].value);
     let h2 = Number(head.children['res_horaire_'+indexHTML].children['horaire-selector_2'].value);
 
-    console.log(h1);
-    console.log(h2);
+
 
     let split_date = res_date.split("-");
     let res_jour = new Jour("X", split_date[2], split_date[1], split_date[0]);
     let res_type = head.children['res_type_'+indexHTML].innerHTML.split(":")[1];
     fs_utils.delete_RES(ID);
-    let myRes = new Reservation(ID, res_client, res_adresse, res_email, res_telephone, res_nb_personne, res_jour, h1, h2, res_name, res_type,res_equipement);
-    console.log(myRes);
+    let myRes = new Reservation(ID, res_client, res_adresse, res_email, res_telephone, res_nb_personne, res_jour, h1, h2, res_name, NoSpaceString(res_type),res_equipement);
+
     fs_utils.save_RES_JSON(myRes);
 }
 
@@ -270,44 +272,44 @@ function modify_RES(ID, indexHTML, btnHTMLElement) {
     let head = btnHTMLElement.parentElement.children
     
     // Nom de la réservation
-    let splitted_value = head['res_name_'+indexHTML].innerHTML.split(":")[1];
+    let splitted_value = head['res_name_'+indexHTML].innerHTML.split(": ")[1];
     head['res_name_' + indexHTML].innerHTML = input_html_generator("Nom de la réservation : ","text",indexHTML,splitted_value);
     
     // Date de la réservation
-    splitted_value = htmlDate_to_Date(head['res_date_'+indexHTML].innerHTML.split(":")[1]);
+    splitted_value = htmlDate_to_Date(head['res_date_'+indexHTML].innerHTML.split(": ")[1]);
     head['res_date_'+indexHTML].innerHTML = input_html_generator("Date de la réservation : ","date",indexHTML,splitted_value);
 
     // Heure de début de la réservation
-    splitted_value = head['res_horaire_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_horaire_'+indexHTML].innerHTML.split(": ")[1];
     splitted_value = splitted_value.replace("h", "");
     splitted_value = splitted_value.split('-');
     head['res_horaire_'+indexHTML].innerHTML = Heure_input_html_generator(indexHTML,splitted_value[0],"start") + "<br>" + Heure_input_html_generator(indexHTML,splitted_value[1],"end");
 
     // Nombre de personne
-    splitted_value = head['res_nbpersonne_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_nbpersonne_'+indexHTML].innerHTML.split(": ")[1];
     splitted_value = splitted_value.replace(" ", "");
     splitted_value = Number(splitted_value);
     head['res_nbpersonne_'+indexHTML].innerHTML = input_html_number_gen(indexHTML,splitted_value);
 
 
     // Nom du client
-    splitted_value = head['res_client_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_client_'+indexHTML].innerHTML.split(": ")[1];
     head['res_client_'+indexHTML].innerHTML = input_html_generator("Nom du client : ","text",indexHTML,splitted_value);
 
     // Email du client
-    splitted_value = head['res_email_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_email_'+indexHTML].innerHTML.split(": ")[1];
     head['res_email_'+indexHTML].innerHTML = input_html_generator("Email du client : ","email",indexHTML,splitted_value);
     
     // Téléphone du client
-    splitted_value = head['res_telephone_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_telephone_'+indexHTML].innerHTML.split(": ")[1];
     head['res_telephone_'+indexHTML].innerHTML = input_html_generator("Téléphone du client : ","tel",indexHTML,splitted_value);
 
     // Adresse postal du client
-    splitted_value = head['res_adresse_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_adresse_'+indexHTML].innerHTML.split(": ")[1];
     head['res_adresse_'+indexHTML].innerHTML = input_html_generator("Adresse postal du client : ","text",indexHTML,splitted_value);
 
     // Equipement
-    splitted_value = head['res_equipement_'+indexHTML].innerHTML.split(":")[1];
+    splitted_value = head['res_equipement_'+indexHTML].innerHTML.split(": ")[1];
     head['res_equipement_'+indexHTML].innerHTML = input_html_generator("Equipement : ","text",indexHTML,splitted_value);
 
 
@@ -327,6 +329,9 @@ function modify_RES(ID, indexHTML, btnHTMLElement) {
 
 }
 
+
+
+
 /**
  * Affiche les réservations du dossier reservation
  * dans la page web avec modification et suppression possible.
@@ -342,6 +347,10 @@ function DisplayReservation() {
         let nextRES = JSON.parse(fs.readFileSync(path, 'utf8'));
         // Formatage de la date
         let date = nextRES.Jour.jour + "/" + nextRES.Jour.month + "/" + nextRES.Jour.year;
+
+
+
+
 
         let nextHTML = '<div class="res_dis" id="' + default_id + index + '">';
         nextHTML += "<h3 id='res_name_" + index + "'>" + "Nom de la réservation : " + nextRES.Raison + "</h3>";

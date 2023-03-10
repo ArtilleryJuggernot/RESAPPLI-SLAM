@@ -153,6 +153,9 @@ class Controleur {
         for (let index = 0; index < this.calendrier.SemaineList[mysemaine].SemaineDays.length; index++) {
             let checkday = this.calendrier.SemaineList[mysemaine].SemaineDays[index];
             if(checkday.jour == day.jour && checkday.month == day.month && checkday.year == day.year){
+                console.log(heure);
+                console.log(this.calendrier.SemaineList[mysemaine].SemaineDays[index]);
+                
                 this.calendrier.SemaineList[mysemaine].SemaineDays[index].ListHeure[heure - 8].content = motif
                 this.calendrier.SemaineList[mysemaine].SemaineDays[index].ListHeure[heure - 8].taken = true;
                 this.calendrier.SemaineList[mysemaine].SemaineDays[index].ListHeure[heure - 8].typetaken = typetaken;
