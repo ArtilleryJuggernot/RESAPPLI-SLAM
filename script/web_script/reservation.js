@@ -2,7 +2,22 @@ import Reservation from '../class/reservation.js';
 import Jour from '../class/jour.js';
 import * as res_utils from '../parse/res_HTML_parse.js';
 import * as fs_utils from '../backend/fs_utils.js';
+import * as form_res from './form-res.js';
 const fs = require('fs');
+
+
+
+
+
+/**
+ * Instancie les formulaires de réservation
+ * @param {string} formType Type de formulaire à instancier (formation, interne, externe)
+ * @param {string} divDest Div où instancier le formulaire
+ */
+
+function InstantiateForms(formType,divDest){
+
+}
 
 // Récup des bouton pour activer les forms
 let btn_popup_formation = document.getElementById("btn-ajt-formation-btn");
@@ -14,50 +29,50 @@ let popup_formation = document.getElementById("popup-res-formation");
 let popup_externe = document.getElementById("popup-res-externe");
 let popup_interne = document.getElementById("popup-res-interne");
 
-popup_formation.style.visibility = "hidden";
-popup_externe.style.visibility = "hidden";
-popup_interne.style.visibility = "hidden";
+popup_formation.style.visibility = "collapse";
+popup_externe.style.visibility = "collapse";
+popup_interne.style.visibility = "collapse";
 
 
 //Event de chaque bouton
 btn_popup_formation.addEventListener("click", () => {
 
-    if (popup_formation.style.visibility == "hidden") {
+    if (popup_formation.style.visibility == "collapse") {
         popup_formation.style.visibility = "visible";
-        popup_externe.style.visibility = "hidden";
-        popup_interne.style.visibility = "hidden";
+        popup_externe.style.visibility = "collapse";
+        popup_interne.style.visibility = "collapse";
     }
     else {
-        popup_formation.style.visibility = "hidden";
-        popup_externe.style.visibility = "hidden";
-        popup_interne.style.visibility = "hidden";
+        popup_formation.style.visibility = "collapse";
+        popup_externe.style.visibility = "collapse";
+        popup_interne.style.visibility = "collapse";
     }
 });
 
 btn_popup_externe.addEventListener("click", () => {
 
-    if (popup_externe.style.visibility == "hidden") {
-        popup_formation.style.visibility = "hidden";
+    if (popup_externe.style.visibility == "collapse") {
+        popup_formation.style.visibility = "collapse";
         popup_externe.style.visibility = "visible";
-        popup_interne.style.visibility = "hidden";
+        popup_interne.style.visibility = "collapse";
     }
     else {
-        popup_formation.style.visibility = "hidden";
-        popup_externe.style.visibility = "hidden";
-        popup_interne.style.visibility = "hidden";
+        popup_formation.style.visibility = "collapse";
+        popup_externe.style.visibility = "collapse";
+        popup_interne.style.visibility = "collapse";
     }
 });
 
 btn_popup_interne.addEventListener("click", () => {
-    if (popup_interne.style.visibility == "hidden") {
-        popup_formation.style.visibility = "hidden";
-        popup_externe.style.visibility = "hidden";
+    if (popup_interne.style.visibility == "collapse") {
+        popup_formation.style.visibility = "collapse";
+        popup_externe.style.visibility = "collapse";
         popup_interne.style.visibility = "visible";
     }
     else {
-        popup_formation.style.visibility = "hidden";
-        popup_externe.style.visibility = "hidden";
-        popup_interne.style.visibility = "hidden";
+        popup_formation.style.visibility = "collapse";
+        popup_externe.style.visibility = "collapse";
+        popup_interne.style.visibility = "collapse";
     }
 });
 
@@ -70,7 +85,7 @@ function parse_formation(form) {
     let ClientTelephone = form.get("client_phone");
     let ClientAdresse = form.get("client_address");
     let ReunionDate = form.get("formation_date");
-    console.log(ReunionDate)
+
     let ReunionHoraire = form.get("horaire_selector");
     let ReunionNbPersonne = Number(form.get("nb_personne"));
 
@@ -82,7 +97,7 @@ function parse_formation(form) {
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Formation");
-    console.log(myRes);
+ 
     fs_utils.save_RES_JSON(myRes);
 }
 
@@ -90,7 +105,6 @@ function parse_interne(form) {
     let ID = fs_utils.GetNextID();
     let ReunionNom = form.get("interne_name");
     let ReunionDate = form.get("interne_date");
-    console.log(ReunionDate)
     let ReunionHoraire1 = Number(form.get("interne_h1"));
     let ReunionHoraire2 = Number(form.get("interne_h2"));
 
@@ -98,7 +112,7 @@ function parse_interne(form) {
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, null, null, null, null, null, ReunionDate,
         ReunionHoraire1, ReunionHoraire2, ReunionNom, "Interne");
-    console.log(myRes);
+
     fs_utils.save_RES_JSON(myRes);
 }
 
@@ -110,14 +124,14 @@ function parse_externe(form) {
     let ClientTelephone = form.get("externe_client_phone");
     let ClientAdresse = form.get("externe_client_addresse");
     let ReunionDate = form.get("externe_date");
-    console.log(ReunionDate)
+
+
     let ReunionNbPersonne = Number(form.get("nb_personne"));
     let ReunionHoraire1 = Number(form.get("externe_h1"));
     let ReunionHoraire2 = Number(form.get("externe_h2"));
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire1, ReunionHoraire2, ReunionNom, "Externe");
-    console.log(myRes);
     fs_utils.save_RES_JSON(myRes);
 }
 
@@ -126,21 +140,18 @@ function parse_externe(form) {
 document.getElementById("form-formation").addEventListener('submit', e => {
     e.preventDefault();
     const data = new FormData(e.target);
-    console.log(data)
     parse_formation(data);
 });
 
 document.getElementById("form-externe").addEventListener('submit', e => {
     e.preventDefault();
     const data = new FormData(e.target);
-    console.log(data)
     parse_externe(data);
 });
 
 document.getElementById("form-interne").addEventListener('submit', e => {
     e.preventDefault();
     const data = new FormData(e.target);
-    console.log(data)
     parse_interne(data);
 });
 
@@ -164,7 +175,6 @@ function input_html_number_gen(ID,initialValue){
 
 function input_html_generator(Content,Type,ID,initialValue){ 
     let my_content = "<label>"+Content+"</label> <input type='"+Type+"' id='"+ID+"' value='"+initialValue+"'><br>";
-    console.log(my_content)
     return my_content;
 }
 
@@ -187,12 +197,15 @@ function htmlDate_to_Date(date){
  * @returns 
  */
 function Heure_input_html_generator(ID,initialValue,timeline){
+    let start = 1;
+    if (timeline == "end")
+        start = 2;
     if (timeline == "start")
         var my_content = "<label>Choisissez votre horaire de début</label>";
     else
         var my_content = "<label>Choisissez votre horaire de fin</label>";
 
-    my_content += "<select name='"+ID+"' id='horaire-selector'>";
+    my_content += "<select name='"+ID+"' id='horaire-selector_"+start+"'>";
     for(let i = 8; i < 19; i++){
         if(i == initialValue){
             my_content += "<option value='"+i+"' selected>"+i+"h</option>";
@@ -201,16 +214,54 @@ function Heure_input_html_generator(ID,initialValue,timeline){
         }
     }
     my_content += "</select>";
-    console.log(my_content)
     return my_content;
 }
+
+/**
+ * 
+ * @param {*} indexHTML - Index HTML de la réservation
+ * @param {*} ID - ID de la réservation
+ */
+function confirm_RES_modification(indexHTML,ID)
+{
+    console.log("confirm_RES_modification");
+
+    console.log(indexHTML);
+
+    let head = document.getElementById("res_display_"+indexHTML);
+    console.log(head);
+    
+    let res_name = head.children['res_name_'+indexHTML].children[1].value;
+    let res_date = head.children['res_date_'+indexHTML].children[1].value;
+    let res_nb_personne = head.children['res_nbpersonne_'+indexHTML].children[1].value;
+    let res_client = head.children['res_client_'+indexHTML].children[1].value;
+    let res_email = head.children['res_email_'+indexHTML].children[1].value;
+    let res_telephone = head.children['res_telephone_'+indexHTML].children[1].value;
+    let res_adresse = head.children['res_adresse_'+indexHTML].children[1].value;
+
+    let h1 = Number(head.children['res_horaire_'+indexHTML].children['horaire-selector_1'].value);
+    let h2 = Number(head.children['res_horaire_'+indexHTML].children['horaire-selector_2'].value);
+
+    console.log(h1);
+    console.log(h2);
+
+    let split_date = res_date.split("-");
+    let res_jour = new Jour("X", split_date[2], split_date[1], split_date[0]);
+    let res_type = head.children['res_type_'+indexHTML].innerHTML.split(":")[1];
+    fs_utils.delete_RES(ID);
+    let myRes = new Reservation(ID, res_client, res_adresse, res_email, res_telephone, res_nb_personne, res_jour, h1, h2, res_name, res_type);
+    console.log(myRes);
+    fs_utils.save_RES_JSON(myRes);
+}
+
 
 // TODO
 /**
  * Permet de modifier la réservation, en changeant avec les inputs sur la page web
  * avec un bouton de confirmation, et le change dans le fichier JSON correspondant
- * @param {int} ID 
- * @param {HTMLElement} btnHTMLElement 
+ * @param {int} ID - ID de la formation
+ * @param {int} indexHTML - index de la formation dans le HTML
+ * @param {HTMLElement} btnHTMLElement - L'élément HTML du bouton
  */
 function modify_RES(ID, indexHTML, btnHTMLElement) {
 
@@ -218,7 +269,7 @@ function modify_RES(ID, indexHTML, btnHTMLElement) {
     
     // Nom de la réservation
     let splitted_value = head['res_name_'+indexHTML].innerHTML.split(":")[1];
-    head['res_name_'+indexHTML].innerHTML = input_html_generator("Nom de la réservation : ","text",indexHTML,splitted_value);
+    head['res_name_' + indexHTML].innerHTML = input_html_generator("Nom de la réservation : ","text",indexHTML,splitted_value);
     
     // Date de la réservation
     splitted_value = htmlDate_to_Date(head['res_date_'+indexHTML].innerHTML.split(":")[1]);
@@ -252,6 +303,21 @@ function modify_RES(ID, indexHTML, btnHTMLElement) {
     // Adresse postal du client
     splitted_value = head['res_adresse_'+indexHTML].innerHTML.split(":")[1];
     head['res_adresse_'+indexHTML].innerHTML = input_html_generator("Adresse postal du client : ","text",indexHTML,splitted_value);
+
+
+    // Création du bouton de confirmation
+
+    let btn_confirm = "<button id='btn_confirm_"+ indexHTML +"'>Confirmer</button>";
+    btnHTMLElement.parentElement.innerHTML += btn_confirm;
+    let my_confirm = document.getElementById("btn_confirm_"+indexHTML);
+    
+    document.getElementsByClassName("btn_modify")[indexHTML].remove();
+    my_confirm.addEventListener("click", () => confirm_RES_modification(indexHTML,ID));
+
+    // Suppression du bouton de modification
+    
+
+
 }
 
 /**
@@ -267,7 +333,6 @@ function DisplayReservation() {
         let filename = files[index];
         let path = dir + filename;
         let nextRES = JSON.parse(fs.readFileSync(path, 'utf8'));
-        console.log(nextRES)
         // Formatage de la date
         let date = nextRES.Jour.jour + "/" + nextRES.Jour.month + "/" + nextRES.Jour.year;
 
@@ -335,4 +400,3 @@ for (let index = 0; index < myBtnDelList.length; index++) {
 
 
 console.log(fs_utils.GetNextID());
-

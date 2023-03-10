@@ -219,6 +219,12 @@ background: black;
 display: flex;
 }
 
+#reserv_list_section{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 30%;
+}
+
 #reserv_list{
     display: flex;
     flex: 0 0 30%;
