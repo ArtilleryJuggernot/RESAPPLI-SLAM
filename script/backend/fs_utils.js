@@ -26,6 +26,7 @@ function save_RES_JSON(reservation) {
     const path = dir + file;
     //fs.writeFile(path, JSON.stringify(reservation))
     fs.writeFileSync(path, JSON.stringify(reservation));
+    window.location.reload();
 }
 
 
@@ -45,6 +46,7 @@ function delete_RES(ID) {
         if (nextRES.ID_reservation == ID)
             fs.unlinkSync(path);
     }
+    window.location.reload();
 }
 
 
