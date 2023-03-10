@@ -96,7 +96,7 @@ function parse_formation(form) {
 
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
-    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Formation");
+    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Formation","Pas d'équipement");
  
     fs_utils.save_RES_JSON(myRes);
 }
@@ -111,7 +111,7 @@ function parse_interne(form) {
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, null, null, null, null, null, ReunionDate,
-        ReunionHoraire1, ReunionHoraire2, ReunionNom, "Interne");
+        ReunionHoraire1, ReunionHoraire2, ReunionNom, "Interne","Pas d'équipement");
 
     fs_utils.save_RES_JSON(myRes);
 }
@@ -124,14 +124,14 @@ function parse_externe(form) {
     let ClientTelephone = form.get("externe_client_phone");
     let ClientAdresse = form.get("externe_client_addresse");
     let ReunionDate = form.get("externe_date");
-
+    let ReunionEquipement = form.get("equipement");
 
     let ReunionNbPersonne = Number(form.get("nb_personne"));
     let ReunionHoraire1 = Number(form.get("externe_h1"));
     let ReunionHoraire2 = Number(form.get("externe_h2"));
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
-    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire1, ReunionHoraire2, ReunionNom, "Externe");
+    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire1, ReunionHoraire2, ReunionNom, "Externe", ReunionEquipement);
     fs_utils.save_RES_JSON(myRes);
 }
 
@@ -238,6 +238,8 @@ function confirm_RES_modification(indexHTML,ID)
     let res_email = head.children['res_email_'+indexHTML].children[1].value;
     let res_telephone = head.children['res_telephone_'+indexHTML].children[1].value;
     let res_adresse = head.children['res_adresse_'+indexHTML].children[1].value;
+    let res_equipement = head.children['res_equipement_'+indexHTML].children[1].value;
+
 
     let h1 = Number(head.children['res_horaire_'+indexHTML].children['horaire-selector_1'].value);
     let h2 = Number(head.children['res_horaire_'+indexHTML].children['horaire-selector_2'].value);
@@ -249,7 +251,7 @@ function confirm_RES_modification(indexHTML,ID)
     let res_jour = new Jour("X", split_date[2], split_date[1], split_date[0]);
     let res_type = head.children['res_type_'+indexHTML].innerHTML.split(":")[1];
     fs_utils.delete_RES(ID);
-    let myRes = new Reservation(ID, res_client, res_adresse, res_email, res_telephone, res_nb_personne, res_jour, h1, h2, res_name, res_type);
+    let myRes = new Reservation(ID, res_client, res_adresse, res_email, res_telephone, res_nb_personne, res_jour, h1, h2, res_name, res_type,res_equipement);
     console.log(myRes);
     fs_utils.save_RES_JSON(myRes);
 }
@@ -304,6 +306,11 @@ function modify_RES(ID, indexHTML, btnHTMLElement) {
     splitted_value = head['res_adresse_'+indexHTML].innerHTML.split(":")[1];
     head['res_adresse_'+indexHTML].innerHTML = input_html_generator("Adresse postal du client : ","text",indexHTML,splitted_value);
 
+    // Equipement
+    splitted_value = head['res_equipement_'+indexHTML].innerHTML.split(":")[1];
+    head['res_equipement_'+indexHTML].innerHTML = input_html_generator("Equipement : ","text",indexHTML,splitted_value);
+
+
 
     // Création du bouton de confirmation
 
@@ -347,6 +354,9 @@ function DisplayReservation() {
         nextHTML += "<p id='res_email_" + index + "'>" + "Email : " + nextRES.Email + "</p>";
         nextHTML += "<p id='res_telephone_" + index + "'>" + "Numéro de Téléphone : " + nextRES.Telephone + "</p>";
         nextHTML += "<p id='res_adresse_" + index + "'>" + "Adresse Postal : " + nextRES.Adresse_Postal + "</p>";
+        nextHTML += "<p id='res_equipement_" + index + "'>" + "Equipement : " + nextRES.equipement + "</p>";
+
+
         nextHTML += '<button class="btn_delete" ">Supprimer</button>';
         nextHTML += '<button class="btn_modify" ">Modifier</button>';
         nextHTML += '</div>';

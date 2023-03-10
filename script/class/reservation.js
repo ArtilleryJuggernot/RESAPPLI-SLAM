@@ -19,9 +19,10 @@
  * @param {int} h2 - Heure de fin de la réservation
  * @param {String} raison - Raison de la réservation
  * @param {String} type - Type de réservation (Interne, Externe, Formation)
+ * @param {String} equipement - Equipement de la réservation
  */
 class Reservation{
-    constructor(IdRerservation,Client,Adresse_Postal,Email,Telephone,NbPersonne,Jour,h1,h2,raison,type){
+    constructor(IdRerservation,Client,Adresse_Postal,Email,Telephone,NbPersonne,Jour,h1,h2,raison,type,equipement){
         this.ID_reservation = IdRerservation
         this.Client = Client;
         this.Adresse_Postal = Adresse_Postal
@@ -34,6 +35,7 @@ class Reservation{
         this.Raison = raison;
         this.type = type;
         this.statut = "Active" // (En attente, Accepté)
+        this.equipement = equipement;
     }
     
 }
