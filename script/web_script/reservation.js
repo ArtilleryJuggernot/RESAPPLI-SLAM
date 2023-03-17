@@ -3,6 +3,7 @@ import Jour from '../class/jour.js';
 import * as res_utils from '../parse/res_HTML_parse.js';
 import * as fs_utils from '../backend/fs_utils.js';
 import * as form_res from './form-res.js';
+import * as res_checker from '../backend/res_checker.js';
 const fs = require('fs');
 
 
@@ -97,8 +98,12 @@ function parse_formation(form) {
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Formation","Aucun");
- 
+    
+    if (res_checker.rulesChecker(myRes))
     fs_utils.save_RES_JSON(myRes);
+    else
+        console.log("Erreur de réservation");
+    
 }
 
 function parse_interne(form) {
@@ -113,7 +118,10 @@ function parse_interne(form) {
     let myRes = new Reservation(ID, null, null, null, null, null, ReunionDate,
         ReunionHoraire1, ReunionHoraire2, ReunionNom, "Interne","Aucun");
 
-    fs_utils.save_RES_JSON(myRes);
+    if (res_checker.rulesChecker(myRes))
+        fs_utils.save_RES_JSON(myRes);
+    else
+        console.log("Erreur de réservation");
 }
 
 function parse_externe(form) {
@@ -132,7 +140,11 @@ function parse_externe(form) {
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
     let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire1, ReunionHoraire2, ReunionNom, "Externe", ReunionEquipement);
-    fs_utils.save_RES_JSON(myRes);
+    
+    if (res_checker.rulesChecker(myRes))
+        fs_utils.save_RES_JSON(myRes);
+    else
+        console.log("Erreur de réservation");
 }
 
 
@@ -255,7 +267,11 @@ function confirm_RES_modification(indexHTML,ID)
     fs_utils.delete_RES(ID);
     let myRes = new Reservation(ID, res_client, res_adresse, res_email, res_telephone, res_nb_personne, res_jour, h1, h2, res_name, NoSpaceString(res_type),res_equipement);
 
-    fs_utils.save_RES_JSON(myRes);
+    if (res_checker.rulesChecker(myRes))
+        fs_utils.save_RES_JSON(myRes);
+    else
+        console.log("Erreur de réservation");
+    
 }
 
 

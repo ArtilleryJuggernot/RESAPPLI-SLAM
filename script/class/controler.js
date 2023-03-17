@@ -12,7 +12,7 @@ import Jour from '../class/jour.js';
 import Semaine from '../class/semaine.js'
 import Calendrier from '../class/calendrier.js';
 import Heure from './heure.js';
-
+const fs = require('fs');
 
 
 /**
@@ -310,7 +310,11 @@ checkOtherHoursTakenOther(day,t1,t2)
         prevWeek[0].addEventListener("click",this.PreviousWeek.bind(this));
         nextWeek[0].addEventListener("click",this.NextWeek.bind(this));
         
-    
+        
+        
+
+
+
     }
 
 
