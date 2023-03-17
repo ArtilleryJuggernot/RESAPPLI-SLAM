@@ -135,11 +135,16 @@ function parse_externe(form) {
     let ReunionEquipement = form.get("equipement");
 
     let ReunionNbPersonne = Number(form.get("nb_personne"));
-    let ReunionHoraire1 = Number(form.get("externe_h1"));
-    let ReunionHoraire2 = Number(form.get("externe_h2"));
+    let ReunionHoraire = form.get("horaire_selector");
+
+    if (ReunionHoraire == "1")
+        ReunionHoraire = [9, 13]
+    else
+        ReunionHoraire = [14, 17];
+
     let split_date = ReunionDate.split("-");
     ReunionDate = new Jour("X", split_date[2], split_date[1], split_date[0])
-    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire1, ReunionHoraire2, ReunionNom, "Externe", ReunionEquipement);
+    let myRes = new Reservation(ID, ClientNom, ClientAdresse, ClientEmail, ClientTelephone, ReunionNbPersonne, ReunionDate, ReunionHoraire[0], ReunionHoraire[1], ReunionNom, "Externe", ReunionEquipement);
     
     if (res_checker.rulesChecker(myRes))
         fs_utils.save_RES_JSON(myRes);
