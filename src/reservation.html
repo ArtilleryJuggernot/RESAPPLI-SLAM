@@ -8,20 +8,22 @@
   <body>
     <div id="main">
       <div id="menu" class="myMenuRes">
-        <a href="./reservation.html" class="menu">Page Réservation</a>
+        <object class="logohaut" data="reslogo.svg" width="102" height="17"> </object>
         <a href="./index.html" class="menu">Page planning</a>
+        <a href="./reservation.html" class="menu">Page Réservation</a>
       </div>
       
       <div id="content">
       <div id="all-bouton">
         
         <div class="btn-container-res" id="btn-ajt-formation">
-          <button class="res-btn" id="btn-ajt-formation-btn">Ajouter une réservation <br />  Formation</button>
+          <button class="btn" id="btn-ajt-formation-btn">Ajouter une réservation <br />  Formation</button>
           <div id="popup-res-formation">
             
             <form id="form-formation" enctype="multipart/form-data">
               <!-- -->
               <label for="client_name">Nom du formateur:</label>
+              
               <input type="text" id="client_name" name="client_name" required>
               
               <br>
@@ -36,13 +38,16 @@
               <label for="formation_date">Date de la formation date:</label>
               <input type="date" id="formation_date" name="formation_date" value="" min="2023-01-16" max="2061-7-3" required>
               
+              <br>
+              <br>
+
               <label for="horaire-select">Choisissez votre horaire</label>
               <select name="horaire_selector" id="horaire-selector">
                 <option value="1">9h -> 13h</option>
                 <option value="2">14h -> 17h</option>
               </select>
               
-              <button type="submit">Envoyer</button>
+              <button class="btnsend" type="submit">Envoyer</button>
             </form>
           
           </div>
@@ -50,7 +55,7 @@
         </div>
         
         <div class="btn-container-res" id="btn-ajt-interne">
-          <button class="res-btn" id="btn-ajt-interne-btn">Ajouter une réservation <br />  Interne</button>
+          <button class="btn" id="btn-ajt-interne-btn">Ajouter une réservation <br />  Interne</button>
           <div id="popup-res-interne">
             <form id="form-interne" enctype="multipart/form-data">
               
@@ -76,7 +81,8 @@
                 <option value="18">18h</option>
               </select>
 
-
+              <br>
+              <br>
               <label for="horaire-select">Choisissez votre horaire de fin</label>
               <select name="interne_h2" id="horaire-selector">
                 <option value="8">8h</option>
@@ -92,12 +98,12 @@
                 <option value="18">18h</option>
               </select>
               
-              <button type="submit">Envoyer</button>
+              <button class="btnsend" type="submit">Envoyer</button>
             </form>
           </div>
         </div>
         <div class="btn-container-res" id="btn-ajt-externe">
-          <button class="res-btn" id="btn-ajt-externe-btn">Ajouter une réservation <br />  Externe</button>
+          <button class="btn" id="btn-ajt-externe-btn">Ajouter une réservation <br />  Externe</button>
           <div id="popup-res-externe">
             <form id="form-externe" enctype="multipart/form-data">
               <!-- -->
@@ -123,20 +129,24 @@
               <br>
               <label for="externe_date">Date de réservation:</label>
               <input type="date" id="formation_date" name="externe_date" value="" min="2023-01-16" max="2061-7-3" required>
-              
+              <br>
+              <br>
               <label for="horaire-select">Choisissez votre horaire</label>
               <select name="horaire_selector" id="horaire-selector">
                 <option value="1">9h -> 13h</option>
                 <option value="2">14h -> 17h</option>
               </select>
-
+              <br>
+              <br>
               <label for="nb_personne">Nombre de personnes présente :</label>
               <input type="number" id="nb_personne" name="nb_personne" min="1" max="30">
+              <br>
+              <br>
               <label for="externe_equipement">Equipement du client :</label>
               <input type="text" id="equipement" name="equipement" required>
               <br>
               <br>
-              <button type="submit">Envoyer</button>
+              <button class="btnsend" type="submit">Envoyer</button>
             </form>
           </div>
         </div>
