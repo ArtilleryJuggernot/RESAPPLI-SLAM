@@ -353,3 +353,14 @@ p{
     color: #595959;
     
 }
+
+.status-res{
+    border-radius: 20px;
+        border: 2px solid rgb(255, 0, 0);
+        margin: 10px;
+        padding: 10px;
+        list-style: none;
+        flex-wrap: wrap;
+        flex: 0 0 20%;
+    
+}
