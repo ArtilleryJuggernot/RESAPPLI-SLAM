@@ -1,5 +1,6 @@
 import Reservation from '../class/reservation.js';
 import Jour from '../class/jour.js';
+import Status from '../class/status.js';
 const fs = require('fs');
 
 /**
@@ -11,6 +12,29 @@ const fs = require('fs');
  * @returns {boolean} - True si il y a un overlap, false sinon
  */
 function checkHoraireOverlap(Firsth1,Firsth2,Secondh1,Secondh2){
+    console.log("Check horaire");
+    console.log("H1-1 = " + Firsth1);
+    console.log("H1-2 = " + Firsth2);
+    console.log("H2-1 = " + Secondh1);
+    console.log("H2-2 = " + Secondh2);
+    for (let i = Firsth1; i < Firsth2; i++) {
+        if(i == Secondh1 || i == Secondh2)
+            return true;
+    }
+    for (let i = Secondh1; i < Secondh2; i++) {
+        if(i == Firsth1 || i == Firsth2)
+            return true;
+    }
+    return false;
+
+}
+
+/**
+ * console.log("Check horaire");
+    console.log("H1-1 = " + Firsth1);
+    console.log("H1-2 = " + Firsth2);
+    console.log("H2-1 = " + Secondh1);
+    console.log("H2-2 = " + Secondh2);
     if (Firsth1 < Secondh1 && Secondh2 > Firsth2)
         return true;
     if (Secondh1 > Firsth1 && Secondh2 > Firsth2)
@@ -24,9 +48,7 @@ function checkHoraireOverlap(Firsth1,Firsth2,Secondh1,Secondh2){
     if (Firsth1 < Secondh1 && Secondh1 < Firsth2 && Firsth2 < Secondh2)
         return true;
     return false;
-}
-
-
+ */
 
 
 /**
@@ -89,9 +111,23 @@ function checkOverlap(myResToCheck,ResList){
 /**
  * Permet de vérifier la réservation selon les différentes règles.
  * @param {Reservation} maReservation 
- * @returns {boolean} - True si la réservation est valide, false sinon
+ * @returns {Status} - Status de la réservation (valide ou avec un message d'erreur)
  */
 function rulesChecker(maReservation){
+    console.log("rulesChecker");
+    
+    if(maReservation.HeureDepart == maReservation.HeureFin){
+        return new Status(false,"La réservation doit durer au moins 1h");
+    }
+
+    if(maReservation.HeureFin > 18 || maReservation.HeureDepart < 8){
+        return new Status(false,"La réservation doit être entre 8h et 18h");
+    }
+
+    if(maReservation.HeureDepart > maReservation.HeureFin){
+        return new Status(false,"La réservation doit être dans le bon ordre");
+    }
+
     const RESFolder = './reservation/';
     var ListeReservation = [];
     fs.readdirSync(RESFolder).forEach(file => {
@@ -106,10 +142,15 @@ function rulesChecker(maReservation){
     let final_rez = new Reservation(nextRES.ID_reservation, nextRES.Client, nextRES.Adresse_Postal, nextRES.Email, nextRES.Telephone, nextRES.NbPersonne, ResJour, Number(nextRES.HeureDepart), Number(nextRES.HeureFin), nextRES.Raison, nextRES.type, nextRES.equipement);
     ListeReservation.push(final_rez);
 })
-    if (checkOverlap(maReservation,ListeReservation) || formation_rules(maReservation,ListeReservation)){
-        return false;
+    if (checkOverlap(maReservation,ListeReservation)){
+        return new Status(false,"Il y a déjà une réservation sur cette plage horaire");
     }
-    return true;
+
+    if (formation_rules(maReservation,ListeReservation)){
+        return new Status(false,"Il y a déjà une formation sur cette demi-journée");
+    }
+    console.log("good !");
+    return new Status(true,"Votre réservation à bien été crée");
 };
 
 export {rulesChecker};
