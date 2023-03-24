@@ -217,6 +217,11 @@ function htmlDate_to_Date(date){
  * @returns 
  */
 function Heure_input_html_generator(ID,initialValue,timeline){
+    if(typeof(initialValue) == "string")
+        initialValue = initialValue.replace('h','');
+        initialValue = Number(initialValue);
+    console.log("initialValue : "+ initialValue)
+    
     let start = 1;
     if (timeline == "end")
         start = 2;
@@ -224,12 +229,15 @@ function Heure_input_html_generator(ID,initialValue,timeline){
         var my_content = "<label>Choisissez votre horaire de début</label>";
     else
         var my_content = "<label>Choisissez votre horaire de fin</label>";
-
+    console.log("start : " +start)
     my_content += "<select name='"+ID+"' id='horaire-selector_"+start+"'>";
+    console.log("SETUP");
     for(let i = 8; i < 19; i++){
         if(i == initialValue){
+            console.log("the value is : "+i);
             my_content += "<option value='"+i+"' selected>"+i+"h</option>";
         }else{
+            console.log("other : "+ i);
             my_content += "<option value='"+i+"'>"+i+"h</option>";
         }
     }
