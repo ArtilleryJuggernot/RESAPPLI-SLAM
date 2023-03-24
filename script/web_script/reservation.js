@@ -31,50 +31,50 @@ let popup_formation = document.getElementById("popup-res-formation");
 let popup_externe = document.getElementById("popup-res-externe");
 let popup_interne = document.getElementById("popup-res-interne");
 
-popup_formation.style.visibility = "collapse";
-popup_externe.style.visibility = "collapse";
-popup_interne.style.visibility = "collapse";
+popup_formation.style.display = "none";
+popup_externe.style.display = "none";
+popup_interne.style.display = "none";
 
 
 //Event de chaque bouton
 btn_popup_formation.addEventListener("click", () => {
 
-    if (popup_formation.style.visibility == "collapse") {
-        popup_formation.style.visibility = "visible";
-        popup_externe.style.visibility = "collapse";
-        popup_interne.style.visibility = "collapse";
+    if (popup_formation.style.display == "none") {
+        popup_formation.style.display = "contents";
+        popup_externe.style.display = "none";
+        popup_interne.style.display = "none";
     }
     else {
-        popup_formation.style.visibility = "collapse";
-        popup_externe.style.visibility = "collapse";
-        popup_interne.style.visibility = "collapse";
+        popup_formation.style.display = "none";
+        popup_externe.style.display = "none";
+        popup_interne.style.display = "none";
     }
 });
 
 btn_popup_externe.addEventListener("click", () => {
 
-    if (popup_externe.style.visibility == "collapse") {
-        popup_formation.style.visibility = "collapse";
-        popup_externe.style.visibility = "visible";
-        popup_interne.style.visibility = "collapse";
+    if (popup_externe.style.display == "none") {
+        popup_formation.style.display = "none";
+        popup_externe.style.display = "contents";
+        popup_interne.style.display = "none";
     }
     else {
-        popup_formation.style.visibility = "collapse";
-        popup_externe.style.visibility = "collapse";
-        popup_interne.style.visibility = "collapse";
+        popup_formation.style.display = "none";
+        popup_externe.style.display = "none";
+        popup_interne.style.display = "none";
     }
 });
 
 btn_popup_interne.addEventListener("click", () => {
-    if (popup_interne.style.visibility == "collapse") {
-        popup_formation.style.visibility = "collapse";
-        popup_externe.style.visibility = "collapse";
-        popup_interne.style.visibility = "visible";
+    if (popup_interne.style.display == "none") {
+        popup_formation.style.display = "none";
+        popup_externe.style.display = "none";
+        popup_interne.style.display = "contents";
     }
     else {
-        popup_formation.style.visibility = "collapse";
-        popup_externe.style.visibility = "collapse";
-        popup_interne.style.visibility = "collapse";
+        popup_formation.style.display = "none";
+        popup_externe.style.display = "none";
+        popup_interne.style.display = "none";
     }
 });
 
@@ -370,7 +370,7 @@ function modify_RES(ID, indexHTML, btnHTMLElement) {
 
     // Création du bouton de confirmation
 
-    let btn_confirm = "<button id='btn_confirm_"+ indexHTML +"'>Confirmer</button>";
+    let btn_confirm = "<button class='btn_confirm' id='btn_confirm_"+ indexHTML +"'>Confirmer</button>";
     btnHTMLElement.parentElement.innerHTML += btn_confirm;
     let my_confirm = document.getElementById("btn_confirm_"+indexHTML);
     
