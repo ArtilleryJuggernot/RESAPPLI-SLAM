@@ -138,22 +138,44 @@ border: solid 2px #2C5382;
     display: flex;
 }
 
-.myMenuRes{
-    
-}
 
+.logohaut{
+    -webkit-user-select: none;
+  -webkit-app-region: drag;
+    padding-left: 20px;
+    padding-top: 30px;
+}
 /* #main{
     width: 100%;
     display: flex;
 } */
 
 #menu{
-    /* width: 20%; */
+    width: 200px;
     display : block;
     background-color: #2C5382;
     font-family: Poppins Bold;
+    
+}
+::-webkit-scrollbar-track
+{
+	
+	border-radius: 10px;
+	background-color: #F5F5F5;
 }
 
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	
+	background-color: #d8d8d8;
+}
 .menu{
     -webkit-appearance: button;
     -moz-appearance: button;
@@ -201,6 +223,7 @@ body{
     margin-bottom: 0px;
     margin-left: 0px;
     overflow-x: hidden;
+    
 }
 
 a {
