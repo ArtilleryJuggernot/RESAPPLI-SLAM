@@ -79,7 +79,7 @@ class Controleur {
                 let myHeure = semaine.SemaineDays[index].ListHeure[index2];
                 let myHeureVal = myHeure.heure;
                 let myContent = myHeure.content;
-                hours[index2].innerHTML =  myHeureVal + "h - " + (myHeureVal+1) + "h" + "<br>" + myContent;
+                hours[index2].innerHTML =  myHeureVal + "h - " + (myHeureVal + 1) + "h" + "<br>" + myContent;
                 if (myHeure.typetaken == "Formation"){
                     hours[index2].classList.add("Formation");
                     hours[index2].classList.remove("Interne");
@@ -176,7 +176,7 @@ class Controleur {
          * @param {string} motif 
          */
     changeSeq(day,h1,h2,motif,typetaken){
-        for (let index = h1; index <= h2; index++) {
+        for (let index = h1; index < h2; index++) {
             this.changeHour(day,index,motif,typetaken);
         }
     }
