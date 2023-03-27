@@ -210,7 +210,7 @@ function htmlDate_to_Date(date){
     return dt.replace(" ", '');
 }
 
-/**
+/** 
  * Similaire à input_html_generator, mais pour les horaires
  * @param {int} ID - L'ID de l'input pour le récupérer et modifier la réservation
  * @param {string} timeline - start ou end | Détermine si c'est l'heure de début ou de fin

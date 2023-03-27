@@ -2,6 +2,8 @@ import Jour from '../class/jour.js';
 import Semaine from '../class/semaine.js';
 import Calendrier from '../class/calendrier.js';
 import Controleur from '../class/controler.js';
+import * as fs_utils from '../backend/fs_utils.js';
+import Config from '../class/config.js';
 const fs = require('fs');
 
 
@@ -46,3 +48,4 @@ fs.readdirSync(RESFolder).forEach(file => {
         MyControleur.setInterneMeeting(ResJour,ResHoraire[0],ResHoraire[1],ResMotif);
     }   
 });
+

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="../style/custom.css">
+    <title>ResAPPLI - Planning</title>
+  </head>
+  <body>
+   
+ <div id="main">
+      
+      <div id="menu">
+        <object class="logohaut" data="reslogo.svg" width="102" height="17"> </object>
+        <a href="./index.html" class="menu">Page planning</a>
+        <a href="./reservation.html" class="menu">Page Réservation</a>
+        <a href="./custom.html" class="menu">Page de personalisation</a>
+      </div>
+
+      <div id="content">
+      <div id="title">
+        <h1>Personalisation des couleurs</h1>
+      </div>
+      
+      <div id="color-menu">
+        
+
+        <div class="color-custom-div">
+<div class="custom-color">
+    <input type="color" id="color-formation" name="a"
+           value="#e66465">
+    <label for="head">Réservation - Formation</label>
+</div>
+
+
+
+<div class="custom-color">
+    <input type="color" id="color-interne" name="a"
+           value="#e66465">
+    <label for="head">Réservation - Interne</label>
+</div>
+
+<div class="custom-color">
+
+    <input type="color" id="color-externe" name="a"
+           value="#e66465">
+    <label for="head">Réservation - Externe</label>
+</div> 
+        </div>
+        
+        <div id="setting-color-manage">
+
+       
+
+          
+
+          <h2> Selection du thème</h2>
+          <label> Selection du thème :</label>
+
+          <div id="theme-selector">
+            <select name='theme-select-name' id='theme-selector-id'></select>
+            
+          </div>
+
+          <br>
+
+          <button class="btn" id="set-color">Charger un thème</button>
+          <br>
+          <button class="btn" id="reset-color">Supprimer le thème</button>
+        </div>
+
+
+       
+
+        <div class="setting-color-create">
+          <h2>Creation de thème</h2>
+          <label> Nom du thème : </label>
+          <br>
+          <input type="text" id="theme-title" placeholder="Nom du thème">
+          <br>
+          <button class="btn" id="save-color">Sauvegarder le thème</button>
+
+        </div>
+     
+
+
+
+
+
+      </div>
+    </div>
+  </body>
+  <!-- Script qui permet de "crée les jours dans la page html"-->
+  <script type="module" src="../script/web_script/custom.js"></script> 
+  </html>

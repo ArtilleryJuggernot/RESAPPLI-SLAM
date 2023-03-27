@@ -12,6 +12,7 @@ import Jour from '../class/jour.js';
 import Semaine from '../class/semaine.js'
 import Calendrier from '../class/calendrier.js';
 import Heure from './heure.js';
+import * as fs_utils from '../backend/fs_utils.js';
 const fs = require('fs');
 
 
@@ -44,6 +45,49 @@ class Controleur {
     } 
     data+= "</div>";
     return data;
+}
+
+
+RefreshColor(){
+    // Chargement de la configuration
+
+let config = fs_utils.load_config("test");
+
+let couleur_interne = config.theme.interne.value
+let couleur_formation = config.theme.formation.value
+let couleur_externe = config.theme.externe.value
+
+
+console.log("INTERNE : ")
+console.log(couleur_interne);
+
+// Chargement des couleurs
+
+let allInterne = document.getElementsByClassName("Interne");
+
+for (let i = 0; i < allInterne.length; i++) {
+    console.log("coucou !")
+    allInterne[i].style.backgroundColor = couleur_interne;
+}
+
+let allFormation = document.getElementsByClassName("Formation");
+
+for (let i = 0; i < allFormation.length; i++) {
+    allFormation[i].style.backgroundColor = couleur_formation;
+}
+
+let allExterne = document.getElementsByClassName("Externe");
+
+for (let i = 0; i < allExterne.length; i++) {
+    allExterne[i].style.backgroundColor = couleur_externe;
+}
+
+let allLibre = document.getElementsByClassName("Libre");
+
+for (let i = 0; i < allLibre.length; i++) {
+    allLibre[i].style.backgroundColor = "#2c538225";
+}
+
 }
 
     /**
@@ -110,8 +154,13 @@ class Controleur {
                 }
             }
         }
+        this.RefreshColor()
     }
     
+
+
+    
+
 
     NextWeek()
     {
@@ -122,6 +171,7 @@ class Controleur {
             let BoundedSetWeekScreen = this.SetWeekScreen.bind(this);
             BoundedSetWeekScreen(this.currentWeek);
         }
+        //this.RefreshColor();
     }
 
     PreviousWeek()
@@ -137,6 +187,7 @@ class Controleur {
             //this.SetWeekScreen(this.currentWeek);
             
         }
+        //this.RefreshColor();
             
     }
 

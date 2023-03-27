@@ -1,4 +1,8 @@
 const fs = require('fs');
+import Theme from '../class/theme.js';
+import Color from '../class/color.js';
+import Config from '../class/config.js';
+
 
 /**
  * Renvoie le prochain ID d'une réservation en 
@@ -49,5 +53,85 @@ function delete_RES(ID) {
     window.location.reload();
 }
 
+/**
+ * 
+ * @param {Theme} theme - le theme à sauvegarder 
+ */
+function save_config_color(theme){
+    const dir = "./themes/";
+    const file = "theme_" + theme.title + ".json"
+    const path = dir + file;
+    fs.writeFileSync(path, JSON.stringify(theme));
+    window.location.reload();
+}
 
-export {GetNextID, save_RES_JSON, delete_RES};
+
+/**
+ * 
+ * @param {Config} config 
+ */
+function save_config(config){
+    const dir = "./config/";
+    const file = "config_" + config.name + ".json"
+    const path = dir + file;
+    fs.writeFileSync(path, JSON.stringify(config));
+    window.location.reload();
+}
+
+
+function JSON_to_Theme(json){
+    console.log("JSON_to_Theme" + json.title);
+    console.log(json);
+    let theme = new Theme(json.title,
+        new Color(json.formation.title, json.formation.value),
+        new Color(json.interne.title, json.interne.value),
+        new Color(json.externe.title, json.externe.value));
+    console.log("Final theme :");
+    console.log(theme);
+    return theme;
+}
+
+/**
+ * Retourne la liste des thèmes présents dans le dossier config
+ * @returns {Theme[]}
+ */
+function get_themes(){
+    let L = [];
+    const dir = "./themes/";
+    var files = fs.readdirSync(dir);
+    const length = files.length;
+    for (let index = 0; index < length; index++) {
+        let filename = files[index];
+        let path = dir + filename;
+        let nextTheme = JSON.parse(fs.readFileSync(path, 'utf8'));
+        L.push(JSON_to_Theme(nextTheme));
+    }
+    return L;
+}
+
+function delete_theme(name){
+    const dir = "./themes/";
+    var files = fs.readdirSync(dir);
+    const length = files.length;
+    for (let index = 0; index < length; index++) {
+        let filename = files[index];
+        let path = dir + filename;
+        let nextTheme = JSON.parse(fs.readFileSync(path, 'utf8'));
+        console.log(nextTheme)
+        if (nextTheme.title == name)
+            fs.unlinkSync(path);
+    }
+    window.location.reload();
+}
+
+function load_config(name){
+    const dir = "./config/";
+    const file = "config_" + name + ".json"
+    const path = dir + file;
+    let config = JSON.parse(fs.readFileSync(path, 'utf8'));
+    return new Config(config.name, JSON_to_Theme(config.theme));
+}
+
+export {GetNextID, save_RES_JSON, delete_RES,
+     save_config_color, get_themes, JSON_to_Theme, 
+     delete_theme, save_config, load_config};
