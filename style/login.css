@@ -1,0 +1,35 @@
+#logo{
+    float: left;
+    margin: 0 10px 0 0;
+    width: 50%;
+    height: 100%;
+}
+
+
+#main{
+    text-align: center;
+}
+
+h1{
+    font-family: Poppins Bold;
+    text-align: center;
+    font-size: 19px;
+    color: #2C5382;
+}
+
+
+input{
+    font-family: Poppins Regular;
+    font-size: 13px;
+    color: #595959;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    border-color: #e3e3e3;
+    border-width: 2px;
+}
+
+label{
+    font-family: Poppins SemiBold;
+    font-size: 30px;
+    color: #2C5382;
+}

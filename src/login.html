@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="../style/login.css">
+    <title>ResAPPLI - Planning</title>
+  </head>
+  <body>
+   
+ <div id="img-left">
+    <img id="logo" src="../img/res_login.png">
+ </div>
+
+ <div id="main">
+  <h1>Ravis de vous revoir !</h1>
+
+  <br>
+  <br>
+  <br>
+  
+  <label> Nom d'utilisateur :</label>
+  <input type="text" placeholder="Nom d'utilisateur :" id="login" name="login" required>
+
+  <br>
+  <br>
+  <br>
+
+  <label>Mot de passe :</label>
+
+  <input type="password" placeholder="Mot de passe :" id="password" name="password" required>
+
+  <button id="connect-btn"> Se connecter </button>
+
+ </div>
+
+ <div id="status">
+        
+ </div>
+
+  </body>
+  <!-- Script qui permet de "crée les jours dans la page html"-->
+  <script type="module" src="../script/web_script/login.js"></script> 
+  </html>

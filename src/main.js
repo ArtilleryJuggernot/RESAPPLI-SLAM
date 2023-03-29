@@ -34,7 +34,7 @@ function createWindow () {
     icon: path.join(__dirname, 'icon.ico'),
 });
 
-  win.loadFile(path.join(__dirname, 'index.html'))
+  win.loadFile(path.join(__dirname, 'login.html'))
   win.center();
 
   splash.loadFile(path.join(__dirname,'loading.html'));
@@ -43,7 +43,7 @@ function createWindow () {
     splash.close();
     win.center();
     win.show();
-  }, 3000);
+  }, 2500);
 }
 
 

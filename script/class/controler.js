@@ -1,13 +1,3 @@
-/**
- * TODO : 
- * 
- * 
- *
- * - Mettre le calendrier par défaut sur la semaine d'aujourd'hui
- * 
- * - Crée la grosse fonction main qui updcheckday.ListHeure[index2].typetaken != "Formation"te tout
- * - Créer autant de classe que table MRD
- */ 
 import Jour from '../class/jour.js';
 import Semaine from '../class/semaine.js'
 import Calendrier from '../class/calendrier.js';

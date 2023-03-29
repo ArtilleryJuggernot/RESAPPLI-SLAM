@@ -2,6 +2,7 @@ const fs = require('fs');
 import Theme from '../class/theme.js';
 import Color from '../class/color.js';
 import Config from '../class/config.js';
+import Login from '../class/login.js';
 
 
 /**
@@ -124,6 +125,8 @@ function delete_theme(name){
     window.location.reload();
 }
 
+
+
 function load_config(name){
     const dir = "./config/";
     const file = "config_" + name + ".json"
@@ -132,6 +135,40 @@ function load_config(name){
     return new Config(config.name, JSON_to_Theme(config.theme));
 }
 
+
+/**
+ * 
+ * @param {Login} Login - Le login à sauvegarder 
+ */
+function save_login(login){
+    const dir = "./user/";
+    const file = "user_" + login.user + ".json"
+    const path = dir + file;
+    fs.writeFileSync(path, JSON.stringify(login));
+}
+
+/**
+ * 
+ * @param {string} name - L'ID du login à charger
+ * @returns {Login} - Le login chargé
+ */
+function load_login(name){
+    const dir = "./user/";
+    const file = "user_" + name + ".json"
+    const path = dir + file;
+    let login = JSON.parse(fs.readFileSync(path, 'utf8'));
+    return new Login(login.ID, login.user, login.hashed_passwd, load_config(login.config.name));
+}
+
+
+function isLoginValid(name){
+    const dir = "./user/";
+    const file = "user_" + name + ".json"
+    const path = dir + file;
+    return fs.existsSync(path)
+}
+
 export {GetNextID, save_RES_JSON, delete_RES,
      save_config_color, get_themes, JSON_to_Theme, 
-     delete_theme, save_config, load_config};
+     delete_theme, save_config, load_config, load_login, save_login
+    , isLoginValid};

@@ -11,6 +11,8 @@ class Config {
         this.name = name;
         this.theme = theme;
     }
+
+    
 }
 
 export default Config;

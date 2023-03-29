@@ -272,10 +272,6 @@ function DisplayStatus(status){
         myMessage.style.borderColor = "green";
     else
         myMessage.style.borderColor = "red";
-    
-
-    
-   
 
     console.log("Display status !");
 
