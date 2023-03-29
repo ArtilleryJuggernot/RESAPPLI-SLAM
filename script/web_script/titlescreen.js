@@ -6,6 +6,9 @@ import * as fs_utils from '../backend/fs_utils.js';
 import Config from '../class/config.js';
 const fs = require('fs');
 
+import * as session_checker from './session_checker.js';
+
+session_checker.isValidSession();
 
 var Mycalendrier = new Calendrier();
 var MyControleur = new Controleur(Mycalendrier);

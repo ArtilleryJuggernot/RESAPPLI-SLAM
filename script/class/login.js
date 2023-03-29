@@ -9,23 +9,35 @@ import Config from './config.js';
  * @param {string} user - Nom d'utilisateur
  * @param {string} hashed_passwd - Mot de passe hashé
  * @param {Config} config - Configuration du login
+ * @param {int} Permision - Permission du login (0: admin, 2: sécretaire, 3 : guest)
  * @author Hugo Jacquel
  */
 class Login {
 
+    /**
+     * @author Hugo Jacquel
+     * @param {string} string 
+     * @returns {string} - Hash de la string
+     */
     hash(string) {
         return createHash('sha256').update(string).digest('hex');
     }
 
-    constructor(ID,user,hashed_passwd,config) {
+    constructor(ID,user,password,config,Permision) {
         this.ID = ID;
         this.user = user;
-        this.hashed_passwd = hashed_passwd;
+        this.hashed_passwd = password;
         this.config = config;
+        this.Permision = Permision;
     }
     checkPassword(password) {
         return this.hash(password) === this.hashed_passwd;
       }
+
+    setSessionID(){
+        console.log("SessionID : " + this.hash(this.user + this.hashed_passwd))
+        return this.hash(this.user + this.hashed_passwd);
+    }
 }
 
 export default Login;

@@ -8,6 +8,9 @@ import Status from '../class/status.js';
 const fs = require('fs');
 
 
+import * as session_checker from './session_checker.js';
+
+session_checker.isValidSession();
 
 
 

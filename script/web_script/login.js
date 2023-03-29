@@ -1,8 +1,13 @@
 import * as fs_utils from '../backend/fs_utils.js';
 import Login from '../class/login.js';
 import Status from '../class/status.js';
+const { createHash } = require('crypto');
 
-fs_utils.save_login(new Login(0, "admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", fs_utils.load_config("test")));
+sessionStorage.clear();
+
+let passwd = "admin"
+let hashed_passwd = createHash('sha256').update(passwd).digest('hex');
+fs_utils.save_login(new Login(0, "admin", hashed_passwd, fs_utils.load_config("test"),0));
 
 
 function sleep(s) {
@@ -40,7 +45,8 @@ async function login(){
     if(fs_utils.isLoginValid(user)){
         let password = document.getElementById("password").value;
         console.log("password: " + password);
-        let myUser = fs_utils.load_login(user);
+        var myUser = fs_utils.load_login(user);
+        console.log("FIND : " + myUser.hashed_passwd)
         if (myUser.checkPassword(password)){
             console.log("Login successful");
 
@@ -48,7 +54,14 @@ async function login(){
             DisplayStatus(status);
 
             await sleep(1);
+            window.sessionStorage.setItem("User", myUser.user);
+            window.sessionStorage.setItem("SessionID", myUser.setSessionID());
             window.location.href = "index.html";
+        }
+        else{
+            console.log("Login failed");
+            let status = new Status(false, "Mot de passe incorrect");
+            DisplayStatus(status);
         }
     }
     else{
