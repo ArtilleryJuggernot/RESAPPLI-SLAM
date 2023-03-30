@@ -211,11 +211,19 @@ a.button {
 }
 
 label{
-    font-size: Large;
+    font-family: Poppins SemiBold;
+    font-size: 14px;
+    color: #2C5382;
 }
 
 input{
-    font-size: Large;
+    font-family: Poppins Regular;
+    font-size: 13px;
+    color: #595959;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    border-color: #e3e3e3;
+    border-width: 2px;
 }
 
 body{
@@ -226,7 +234,11 @@ body{
     overflow-x: hidden;
     
 }
-
+h2{
+    font-family: Poppins Bold;
+    font-size: 19px;
+    color: #2C5382;
+}
 a {
     color: inherit;
     text-decoration: underline 0.15em rgba(255, 255, 255, 0);
@@ -410,4 +422,14 @@ p{
     padding-left: 50px;
     display: flex;
     flex-wrap: wrap;
+}
+
+select{
+    font-family: Poppins Regular;
+    font-size: 13px;
+    color: #595959;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    border-color: #e3e3e3;
+    border-width: 2px;
 }

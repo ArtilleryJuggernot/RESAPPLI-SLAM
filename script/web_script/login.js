@@ -24,7 +24,7 @@ function DisplayStatus(status){
     if (root.children.length > 0)
         root.removeChild(root.children[0]);
     
-    let my_content = "<div class='status-res'> <h2>Statut du login :</h2> <p>"+status.type+"</p> </div>";
+    let my_content = "<div class='status-res'> <p>"+status.type+"</p> </div>";
     root.innerHTML += my_content
     let myMessage = document.getElementsByClassName("status-res")[0];
     if (status.isvalid)
@@ -54,6 +54,7 @@ async function login(){
             DisplayStatus(status);
 
             await sleep(1);
+            
             window.sessionStorage.setItem("User", myUser.user);
             window.sessionStorage.setItem("SessionID", myUser.setSessionID());
             window.location.href = "index.html";
@@ -62,6 +63,8 @@ async function login(){
             console.log("Login failed");
             let status = new Status(false, "Mot de passe incorrect");
             DisplayStatus(status);
+            let beat = new Audio('logon.mp3');
+            beat.play();
         }
     }
     else{

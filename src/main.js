@@ -7,11 +7,11 @@ function createWindow () {
     titleBarStyle: 'hidden',
     titleBarOverlay: {
         // color of titile bar
-        color: '#3b3b3b',
+        color: '#EDF6FF',
         // color of titile bar control
         symbolColor: '#74b1be',
         // height of titile bar
-        height: 32,},
+        height: 12,},
     width: 1200,
     height: 600,
     show: false,
@@ -43,7 +43,7 @@ function createWindow () {
     splash.close();
     win.center();
     win.show();
-  }, 2500);
+  }, 3000);
 }
 
 

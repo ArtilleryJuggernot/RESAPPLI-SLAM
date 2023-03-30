@@ -2,7 +2,10 @@
     width: 100%;
     display: block;
 }
-
+html{
+    height: 100%;
+    width: 100%;
+}
 #aside{
     width: 100%;
 }

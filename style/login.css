@@ -1,11 +1,35 @@
+@font-face {
+    font-family: 'Poppins Bold';
+    font-weight: 600;
+    src: url('../font/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins Regular';
+    font-weight: 400;
+    src: url('../font/Poppins-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Poppins SemiBold';
+    font-weight: 500;
+    src: url('../font/Poppins-SemiBold.ttf') format('truetype');
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+
 #logo{
     float: left;
-    margin: 0 10px 0 0;
-    width: 50%;
-    height: 100%;
+    margin-top:0px;
+    width: 40%;
+    height: auto;
 }
 
 
+.status-res{
+    font-family: Poppins SemiBold;
+    font-size: 10px;
+    color: #2c538259;
+    text-align: center;
+}
 #main{
     text-align: center;
 }
@@ -17,19 +41,73 @@ h1{
     color: #2C5382;
 }
 
-
+body{
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    overflow-y: hidden;
+    height: 100%;
+    background-color: #EDF6FF;
+    
+}
 input{
     font-family: Poppins Regular;
+    height: 35px;
     font-size: 13px;
     color: #595959;
-    background-color: #f8f8f8;
+    background-color: #E7F0F9;
     border-radius: 10px;
-    border-color: #e3e3e3;
+    border-color: #2c53822f;
     border-width: 2px;
+    width: 250px;
 }
+
+input:focus { 
+    transition: all 0.3s ease-in-out;
+    outline: none !important;
+    border-color: #2c53827e;
+    box-shadow: 0 0 30px #2c53822f
+ }
 
 label{
     font-family: Poppins SemiBold;
     font-size: 30px;
     color: #2C5382;
 }
+
+button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 10px;
+    font-weight: 600;
+    margin: 0 10px;
+    width: 200px;
+    padding: 10px 0;
+    box-shadow: 0 0 20px rgba(104, 85, 224, 0.2);
+    transition: 0.4s;
+  }
+  
+  .reg {
+    color: white;
+    background-color: #2C5382;
+  }
+  
+  #connect-btn {
+    color: #2C5382;
+    background-color: #E3EFFA;
+    border: 2px solid #2C5382;
+  }
+  
+  #connect-btn:hover {
+    color: white;
+    box-shadow: 0 0 20px #2c5382aa;
+    background-color: #2C5382;
+  }
+  #connect-btn:active {
+    color: white;
+    box-shadow: 0 0 5px #2c538288;
+    background-color: #598ac7;
+    border: 2px solid #598ac7;
+  }
+  
