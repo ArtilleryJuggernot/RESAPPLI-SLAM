@@ -43,7 +43,7 @@ function createWindow () {
     splash.close();
     win.center();
     win.show();
-  }, 3000);
+  }, 3200);
 }
 
 
