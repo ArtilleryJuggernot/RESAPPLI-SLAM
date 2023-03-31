@@ -5,7 +5,6 @@ import * as fs_utils from '../backend/fs_utils.js';
 import Config from '../class/config.js';
 var colorID = ['color-formation','color-interne','color-externe'];
 import * as session_checker from './session_checker.js';
-
 session_checker.isValidSession();
 
 

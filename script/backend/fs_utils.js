@@ -1,5 +1,5 @@
 const fs = require('fs');
-var mysql = require('mysql');
+const mysql = require('mysql');
 import Theme from '../class/theme.js';
 import Color from '../class/color.js';
 import Config from '../class/config.js';
@@ -53,7 +53,6 @@ function delete_RES(ID) {
         let filename = files[index];
         let path = dir + filename;
         let nextRES = JSON.parse(fs.readFileSync(path, 'utf8'));
-        console.log(nextRES)
         if (nextRES.ID_reservation == ID)
             fs.unlinkSync(path);
     }
@@ -87,14 +86,10 @@ function save_config(config){
 
 
 function JSON_to_Theme(json){
-    console.log("JSON_to_Theme" + json.title);
-    console.log(json);
     let theme = new Theme(json.title,
         new Color(json.formation.title, json.formation.value),
         new Color(json.interne.title, json.interne.value),
         new Color(json.externe.title, json.externe.value));
-    console.log("Final theme :");
-    console.log(theme);
     return theme;
 }
 
@@ -124,7 +119,6 @@ function delete_theme(name){
         let filename = files[index];
         let path = dir + filename;
         let nextTheme = JSON.parse(fs.readFileSync(path, 'utf8'));
-        console.log(nextTheme)
         if (nextTheme.title == name)
             fs.unlinkSync(path);
     }
@@ -163,7 +157,7 @@ function load_login(name){
     const file = "user_" + name + ".json"
     const path = dir + file;
     let login = JSON.parse(fs.readFileSync(path, 'utf8'));
-    return new Login(login.ID, login.user, login.hashed_passwd, load_config(login.config.name));
+    return new Login(login.ID, login.user, login.hashed_passwd, load_config(login.config.name),0);
 }
 
 

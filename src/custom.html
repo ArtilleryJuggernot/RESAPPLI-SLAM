@@ -5,19 +5,23 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="../style/custom.css">
+    <link rel="stylesheet" href="../style/menu.css">
     <title>ResAPPLI - Planning</title>
   </head>
   <body>
-   
+   <script src="../script/web_script/session_checker.js"></script>
  <div id="main">
       
       <div id="menu">
         <object class="logohaut" data="reslogo.svg" width="102" height="17"> </object>
+        <p class="login" id="login-name"></p>
+        <p class="login" id="login-role"></p>
         <a href="./index.html" class="menu">Page planning</a>
         <a href="./reservation.html" class="menu">Page Réservation</a>
         <a href="./custom.html" class="menu">Page de personalisation</a>
         <a href="./login.html" class="menu">Se déconnecter</a>
       </div>
+
 
       <div id="content">
       <div id="title">
@@ -93,5 +97,6 @@
     </div>
   </body>
   <!-- Script qui permet de "crée les jours dans la page html"-->
+  <script type="module" src="../script/web_script/menu.js"></script>
   <script type="module" src="../script/web_script/custom.js"></script> 
   </html>

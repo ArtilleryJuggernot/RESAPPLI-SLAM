@@ -142,6 +142,11 @@ for (let i = 0; i < allLibre.length; i++) {
                     hours[index2].classList.remove("Externe");
                     hours[index2].classList.remove("Formation");
                 }
+                hours[index2].classList.add("hovertext");
+                if(myHeure.typetaken == "")
+                    hours[index2].setAttribute("data-hover","Réservation type : "+  "Libre" )
+                else
+                    hours[index2].setAttribute("data-hover","Réservation type : "+  myHeure.typetaken)
             }
         }
         this.RefreshColor()

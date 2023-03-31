@@ -95,7 +95,7 @@ function parse_formation(form) {
     let ReunionNbPersonne = Number(form.get("nb_personne"));
 
     if (ReunionHoraire == "1")
-        ReunionHoraire = [9, 13]
+        ReunionHoraire = [9, 12]
     else
         ReunionHoraire = [14, 17];
 

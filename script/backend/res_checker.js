@@ -12,11 +12,6 @@ const fs = require('fs');
  * @returns {boolean} - True si il y a un overlap, false sinon
  */
 function checkHoraireOverlap(Firsth1,Firsth2,Secondh1,Secondh2){
-    console.log("Check horaire");
-    console.log("H1-1 = " + Firsth1);
-    console.log("H1-2 = " + Firsth2);
-    console.log("H2-1 = " + Secondh1);
-    console.log("H2-2 = " + Secondh2);
     for (let i = Firsth1; i < Firsth2; i++) {
         if(i == Secondh1 || i == Secondh2)
             return true;
@@ -29,26 +24,6 @@ function checkHoraireOverlap(Firsth1,Firsth2,Secondh1,Secondh2){
 
 }
 
-/**
- * console.log("Check horaire");
-    console.log("H1-1 = " + Firsth1);
-    console.log("H1-2 = " + Firsth2);
-    console.log("H2-1 = " + Secondh1);
-    console.log("H2-2 = " + Secondh2);
-    if (Firsth1 < Secondh1 && Secondh2 > Firsth2)
-        return true;
-    if (Secondh1 > Firsth1 && Secondh2 > Firsth2)
-        return true;
-    if (Firsth1 < Secondh1 && Secondh1 < Firsth2 && Secondh2 > Firsth2)
-        return true;
-    if (Secondh1 < Firsth1 && Firsth1 < Secondh2 && Firsth2 > Secondh2)
-        return true;
-    if (Secondh1 < Firsth1 && Firsth1 < Secondh2 && Secondh2 < Firsth2)
-        return true;
-    if (Firsth1 < Secondh1 && Secondh1 < Firsth2 && Firsth2 < Secondh2)
-        return true;
-    return false;
- */
 
 
 /**
@@ -114,7 +89,6 @@ function checkOverlap(myResToCheck,ResList){
  * @returns {Status} - Status de la réservation (valide ou avec un message d'erreur)
  */
 function rulesChecker(maReservation){
-    console.log("rulesChecker");
     
     if(maReservation.HeureDepart == maReservation.HeureFin){
         return new Status(false,"La réservation doit durer au moins 1h");
@@ -132,9 +106,8 @@ function rulesChecker(maReservation){
     var ListeReservation = [];
     fs.readdirSync(RESFolder).forEach(file => {
     
-    console.log("reading path res");
     let nextRES = JSON.parse(fs.readFileSync(RESFolder+file, 'utf8'));
-    console.log(nextRES.type);
+
     var ResJour = new Jour("X",
             parseInt(nextRES.Jour.jour,10),
             parseInt(nextRES.Jour.month,10),
@@ -149,7 +122,7 @@ function rulesChecker(maReservation){
     if (formation_rules(maReservation,ListeReservation)){
         return new Status(false,"Il y a déjà une formation sur cette demi-journée");
     }
-    console.log("good !");
+
     return new Status(true,"Votre réservation à bien été crée");
 };
 

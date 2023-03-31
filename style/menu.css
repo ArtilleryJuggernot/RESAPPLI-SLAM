@@ -1,0 +1,12 @@
+.login{
+    font-size: 14px;
+    font-family: Poppins Bold;
+    font-weight: 900;
+    color: #b7ff00;
+    padding: 10px 30px;
+    transition : 469ms;
+    transform: translateY(0);
+    align-items: center;
+
+    display: block;  
+}

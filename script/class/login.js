@@ -29,6 +29,17 @@ class Login {
         this.hashed_passwd = password;
         this.config = config;
         this.Permision = Permision;
+        this.role = "";
+        if (Permision == 0){
+            this.role = "Administrateur";
+        }
+        else if (Permision == 1){
+            this.role = "Secrétaire";
+        }
+        else if (Permision == 2){
+            this.role = "Guest";
+        }
+
     }
     checkPassword(password) {
         return this.hash(password) === this.hashed_passwd;

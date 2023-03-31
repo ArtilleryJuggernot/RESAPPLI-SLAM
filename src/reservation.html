@@ -3,12 +3,16 @@
   <head>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="../style/style2.css">
+    <link rel="stylesheet" href="../style/menu.css">
   </head>
 
   <body>
+    <script src="../script/web_script/session_checker.js"></script>
     <div id="main">
       <div id="menu" class="myMenuRes">
         <object class="logohaut" data="reslogo.svg" width="102" height="17"> </object>
+        <p class="login" id="login-name"></p>
+        <p class="login" id="login-role"></p>
         <a href="./index.html" class="menu">Page planning</a>
         <a href="./reservation.html" class="menu">Page Réservation</a>
         <a href="./custom.html" class="menu">Page de personalisation</a>
@@ -174,5 +178,6 @@
 
     </div>
   </body>
+  <script type="module" src="../script/web_script/menu.js"></script>
   <script type="module" src="../script/web_script/reservation.js"></script>
 </html>
