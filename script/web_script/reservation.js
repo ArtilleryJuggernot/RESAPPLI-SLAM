@@ -142,7 +142,7 @@ function parse_externe(form) {
     let ReunionHoraire = form.get("horaire_selector");
 
     if (ReunionHoraire == "1")
-        ReunionHoraire = [9, 13]
+        ReunionHoraire = [9, 12]
     else
         ReunionHoraire = [14, 17];
 

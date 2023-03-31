@@ -1,9 +1,15 @@
 const fs = require('fs');
+var mysql = require('mysql');
 import Theme from '../class/theme.js';
 import Color from '../class/color.js';
 import Config from '../class/config.js';
 import Login from '../class/login.js';
 
+
+var con = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "jug",
+});
 
 /**
  * Renvoie le prochain ID d'une réservation en 

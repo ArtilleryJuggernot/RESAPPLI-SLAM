@@ -10,9 +10,11 @@ import * as session_checker from './session_checker.js';
 
 session_checker.isValidSession();
 
-var Mycalendrier = new Calendrier();
+var Mycalendrier = new Calendrier("Beryl");
 var MyControleur = new Controleur(Mycalendrier);
 
+
+document.getElementsByTagName("h1")[0].innerHTML += " : " + MyControleur.calendrier.SalleName;
 
 const RESFolder = './reservation/';
 fs.readdirSync(RESFolder).forEach(file => {
