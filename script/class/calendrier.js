@@ -1,8 +1,15 @@
 import Semaine from "./semaine.js";
 import Jour from "./jour.js";
 
+
+/**
+ * @class Calendrier
+ * @description Classe représentant un calendrier
+ * @param {string} SalleName - Le nom de la salle
+ */
 class Calendrier{
-    constructor(){
+    constructor(SalleName){
+        this.SalleName = SalleName;
         this.SemaineList = []
         this.HoursListReserved = [];
         var myday = new Jour("Lundi",16,1,2023)
