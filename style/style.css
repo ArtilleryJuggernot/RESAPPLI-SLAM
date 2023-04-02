@@ -154,12 +154,13 @@ border: solid 2px #2C5382;
 } */
 
 #menu{
-    width: 223px;
+    width: 260px;
     display : block;
     background-color: #2C5382;
     font-family: Poppins Bold;
     
 }
+
 ::-webkit-scrollbar-track
 {
 	

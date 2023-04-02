@@ -403,7 +403,9 @@ p{
 #color-menu{
     padding: 20px;
     display: flex;
+    flex-wrap: wrap;
     flex: 0 0 30%;
+    padding-bottom: 100%;
 }
 
 #content{
