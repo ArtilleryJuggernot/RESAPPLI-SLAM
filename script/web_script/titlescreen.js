@@ -54,3 +54,13 @@ fs.readdirSync(RESFolder).forEach(file => {
     }   
 });
 
+
+function key_manage_week(key){
+    if(key.code == 'ArrowRight')
+        MyControleur.NextWeek();
+    
+    else if(key.code == 'ArrowLeft')
+        MyControleur.PreviousWeek();
+    }
+
+document.onkeydown = key_manage_week;

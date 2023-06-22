@@ -1,5 +1,6 @@
 const { createHash } = require('crypto');
 import Config from './config.js';
+import * as fs_utils from '../backend/fs_utils.js'
 
 
 
@@ -23,13 +24,25 @@ class Login {
         return createHash('sha256').update(string).digest('hex');
     }
 
-    constructor(ID,user,password,config,Permision) {
+    constructor(ID,user,password,config,Permision,creationDate = 'DEFAULT') {
         this.ID = ID;
         this.user = user;
         this.hashed_passwd = password;
         this.config = config;
         this.Permision = Permision;
         this.role = "";
+
+        // Création d'un compte
+        if (creationDate == 'DEFAULT') {
+            this.creationDate = new Date();
+        }
+        // Connexion à un compte déjà existant
+        else {
+            this.creationDate = creationDate;
+        }
+            
+        
+        this.lastConnection = new Date();
         if (Permision == 0){
             this.role = "Administrateur";
         }
@@ -48,6 +61,12 @@ class Login {
     setSessionID(){
         console.log("SessionID : " + this.hash(this.user + this.hashed_passwd))
         return this.hash(this.user + this.hashed_passwd);
+    }
+
+    Disconnect(){
+        sessionStorage.clear();
+        this.lastConnection = new Date();
+        fs_utils.save_login(this)
     }
 }
 

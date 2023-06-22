@@ -2,14 +2,16 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/compte.css">
     <link rel="stylesheet" href="../style/menu.css">
     <title>ResAPPLI - Planning</title>
   </head>
   <body>
+   <script type="module" src="../script/web_script/session_checker.js"></script>
  <div id="main">
-    <div id="calendrier">
+      
       <div id="menu">
         <object class="logohaut" data="reslogo.svg" width="102" height="17"> </object>
         <p class="login" id="login-name"></p>
@@ -20,36 +22,36 @@
         <a href="./compte.html" class="menu">Page de gestion du compte</a>
         <a href="./login.html" class="menu">Se déconnecter</a>
       </div>
+
+
+      <div id="content">
+        <h1>Paramétrage du compte</h1>
       
+      <div id="param-menu">
+        
 
-      <div id="aside"><div id="textandbtn">
-        <h1>Planning</h1>
-    <div id="btn-semaine-div">
-      <div class="btn-space">
-        <button class="btn previous-week">&lt;</button>
+        <div class="user_info">
+          <div class="container">
+            <label id="username">Nom du compte : </label>
+          </div>
+          <div class="container">
+            <label id="perm">Rôle | Permission : </label>
+          </div>
+
+          <div class="container">
+            <label id="last_con">Dernière connexion : </label>
+          </div>
+
+        </div> 
+        
       </div>
-    <div class="btn-space">
-        <button class="btn next-week">&gt;</button>
-    </div>
-  </div>
-      <div id="currentWeek">
         
-    </div>
-        
- 
-        <!-- Le contenu sera automatiquement ajouté en JS avec la classe Controler-->
 
-      </div> 
-
+     
+      </div>
     </div>
-
-    <!-- <div id="footer">
-      <p id="version">v.0.3 vBeta</p> 
-      <img id="prixy-logo-footer" src="../img/prixy.png">
-    </div>
-     -->
   </body>
   <!-- Script qui permet de "crée les jours dans la page html"-->
   <script type="module" src="../script/web_script/menu.js"></script>
-  <script type="module" src="../script/web_script/titlescreen.js"></script>
+  <script type="module" src="../script/web_script/account.js"></script> 
   </html>

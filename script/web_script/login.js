@@ -7,7 +7,7 @@ sessionStorage.clear();
 
 let passwd = "admin"
 let hashed_passwd = createHash('sha256').update(passwd).digest('hex');
-fs_utils.save_login(new Login(0, "admin", hashed_passwd, fs_utils.load_config("test"),0));
+fs_utils.save_login(new Login(0, "admin", hashed_passwd, fs_utils.load_config("test"),0,new Date(2023,1,1)));
 
 
 function sleep(s) {

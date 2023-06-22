@@ -144,7 +144,7 @@ for (let i = 0; i < allLibre.length; i++) {
                 }
                 hours[index2].classList.add("hovertext");
                 if(myHeure.typetaken == "")
-                    hours[index2].setAttribute("data-hover","Réservation type : "+  "Libre" )
+                    hours[index2].setAttribute("data-hover","Emplactement "+  "Libre" )
                 else
                     hours[index2].setAttribute("data-hover","Réservation type : "+  myHeure.typetaken)
             }
