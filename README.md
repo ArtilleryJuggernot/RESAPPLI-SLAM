@@ -26,3 +26,9 @@ de salle à travers le temps.
 - Modification des permissions / rôle d'un compte (Administrateur sur les autres comptes)
 - Ajout ou suppression de compte
 - Flexibilité : Création de réservation personalisée
+
+# Installation
+
+``git clone https://github.com/MrHugojuggernot/RESAPPLI-SLAM && cd RESAPPLI-SLAM``
+<br>
+``npm i && npm start``
