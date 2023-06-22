@@ -396,16 +396,25 @@ p{
     
 }
 
+.hide{
+    visibility: hidden;
+}
+
+.visible{
+    visibility: visible;
+}
+
 #setting-color{
     display: flex;
     flex-wrap: wrap;
 }
 
+#form_passwd{
+    padding-top: 20px;
+}
+
 #param-menu{
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    flex: 0 0 30%;
     padding-bottom: 100%;
 }
 
@@ -414,13 +423,9 @@ p{
 }
 
 .color-custom-div, #setting-color-manage, .setting-color-create{
-    padding: 50px;
 }
 
-.user_info{
-    display: block;
-    padding: 50px;
-}
+
 
 .container{
     padding-bottom: 25px;

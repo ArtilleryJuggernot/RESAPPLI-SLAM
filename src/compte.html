@@ -29,21 +29,62 @@
       
       <div id="param-menu">
         
+        <h2>Information du compte</h2>
 
-        <div class="user_info">
           <div class="container">
             <label id="username">Nom du compte : </label>
           </div>
           <div class="container">
-            <label id="perm">Rôle | Permission : </label>
+            <label id="perm">Rôle : </label>
           </div>
 
           <div class="container">
-            <label id="last_con">Dernière connexion : </label>
+            <label id="dt_crea">Création du compte : </label>
           </div>
 
-        </div> 
+
+        <h2>Actions utilisateurs</h2>
         
+          <div id="actions_users">
+
+            <div class="action acc_change_passwd">
+              
+              <button  class="btn" id="acc_change_passwd">Changer le mot de passe</button>
+            
+              <div id='form_passwd' class="hide">
+
+                <form id="form-change_passwd" enctype="multipart/form-data">
+                  <label for="old_passwd">Ancien mot de passe :</label>  
+                  <input type="password" placeholder="Ancien mot de passe" type="text" id="old_passwd" name="old_passwd" required>
+                  
+                  <br>
+                  <br>
+    
+                  <label for="new_passwd">Nouveau mot de passe :</label>  
+                  <input type="password" placeholder="Nouveau mot de passe" type="text" id="new_passwd" name="new_passwd" required>
+                  
+                  <br>
+                  <br>
+    
+                  <label for="new_confirm">Confirmer le mot de passe :</label>  
+                  <input type="password" placeholder="Nouveau mot de passe" type="text" id="new_confirm" name="new_confirm" required>
+    
+                  <br><br>
+
+                  <button class="btnsend" type="submit">Envoyer</button>
+                
+                
+                </form>
+
+                <div id="status_passwd"></div>
+
+
+              </div>
+            
+            </div>
+
+          </div>
+
       </div>
         
 
