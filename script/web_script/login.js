@@ -5,9 +5,15 @@ const { createHash } = require('crypto');
 
 sessionStorage.clear();
 
-let passwd = "admin"
-let hashed_passwd = createHash('sha256').update(passwd).digest('hex');
-fs_utils.save_login(new Login(0, "admin", hashed_passwd, fs_utils.load_config("test"),0));
+// let passwd = "admin"
+// let hashed_passwd = createHash('sha256').update(passwd).digest('hex');
+// fs_utils.save_login(new Login(0, "admin", hashed_passwd, fs_utils.load_config("test"),0,new Date(2022,1,1)));
+
+
+// let passwd2 = "test"
+// let hashed_passwd2 = createHash('sha256').update(passwd2).digest('hex');
+// fs_utils.save_login(new Login(1, "test", hashed_passwd2, fs_utils.load_config("test"),3,));
+
 
 
 function sleep(s) {

@@ -157,7 +157,7 @@ function load_login(name){
     const file = "user_" + name + ".json"
     const path = dir + file;
     let login = JSON.parse(fs.readFileSync(path, 'utf8'));
-    return new Login(login.ID, login.user, login.hashed_passwd, load_config(login.config.name),0);
+    return new Login(login.ID, login.user, login.hashed_passwd, load_config(login.config.name),login.Permision,login.creationDate);
 }
 
 

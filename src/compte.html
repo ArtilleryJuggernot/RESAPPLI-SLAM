@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="../style/compte.css">
+    <link rel="stylesheet" href="../style/menu.css">
+    <title>ResAPPLI - Planning</title>
+  </head>
+  <body>
+   <script type="module" src="../script/web_script/session_checker.js"></script>
+ <div id="main">
+      
+      <div id="menu">
+        <object class="logohaut" data="reslogo.svg" width="102" height="17"> </object>
+        <p class="login" id="login-name"></p>
+        <p class="login" id="login-role"></p>
+        <a href="./index.html" class="menu">Page planning</a>
+        <a href="./reservation.html" class="menu">Page Réservation</a>
+        <a href="./custom.html" class="menu">Page de personalisation</a>
+        <a href="./compte.html" class="menu">Page de gestion du compte</a>
+        <a href="./login.html" class="menu">Se déconnecter</a>
+      </div>
+
+
+      <div id="content">
+        <h1>Paramétrage du compte</h1>
+      
+      <div id="param-menu">
+        
+        <h2>Information du compte</h2>
+
+          <div class="container">
+            <label id="username">Nom du compte : </label>
+          </div>
+          <div class="container">
+            <label id="perm">Rôle : </label>
+          </div>
+
+          <div class="container">
+            <label id="dt_crea">Création du compte : </label>
+          </div>
+
+
+        <h2>Actions utilisateurs</h2>
+        
+          <div id="actions_users">
+
+            <div class="action acc_change_passwd">
+              
+              <button  class="btn" id="acc_change_passwd">Changer le mot de passe</button>
+            
+              <div id='form_passwd' class="hide">
+
+                <form id="form-change_passwd" enctype="multipart/form-data">
+                  <label for="old_passwd">Ancien mot de passe :</label>  
+                  <input type="password" placeholder="Ancien mot de passe" type="text" id="old_passwd" name="old_passwd" required>
+                  
+                  <br>
+                  <br>
+    
+                  <label for="new_passwd">Nouveau mot de passe :</label>  
+                  <input type="password" placeholder="Nouveau mot de passe" type="text" id="new_passwd" name="new_passwd" required>
+                  
+                  <br>
+                  <br>
+    
+                  <label for="new_confirm">Confirmer le mot de passe :</label>  
+                  <input type="password" placeholder="Nouveau mot de passe" type="text" id="new_confirm" name="new_confirm" required>
+    
+                  <br><br>
+
+                  <button class="btnsend" type="submit">Envoyer</button>
+                
+                
+                </form>
+
+                <div id="status_passwd"></div>
+
+
+              </div>
+            
+            </div>
+
+          </div>
+
+      </div>
+        
+
+     
+      </div>
+    </div>
+  </body>
+  <!-- Script qui permet de "crée les jours dans la page html"-->
+  <script type="module" src="../script/web_script/menu.js"></script>
+  <script type="module" src="../script/web_script/account.js"></script> 
+  </html>

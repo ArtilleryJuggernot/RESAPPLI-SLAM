@@ -2,7 +2,6 @@ import Reservation from '../class/reservation.js';
 import Jour from '../class/jour.js';
 import * as res_utils from '../parse/res_HTML_parse.js';
 import * as fs_utils from '../backend/fs_utils.js';
-import * as form_res from './form-res.js';
 import * as res_checker from '../backend/res_checker.js';
 import Status from '../class/status.js';
 const fs = require('fs');
