@@ -9,7 +9,7 @@
 
 # What's RES ? 
 
-RES est une application de réservation très personalisable en client lourd (Electron JS) pour tous et toute. 
+RES est une application de réservation très personalisable en client lourd (Electron JS) pour tout le monde
 
 Initialement un projet scolaire, RES a pour projet de devenir un utilitaire libre et flexible pour n'importe quel organisme qui souhaite organiser sa gestion
 de salle à travers le temps.
