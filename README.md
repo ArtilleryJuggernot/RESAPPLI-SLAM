@@ -32,3 +32,11 @@ de salle à travers le temps.
 ``git clone https://github.com/MrHugojuggernot/RESAPPLI-SLAM && cd RESAPPLI-SLAM``
 <br>
 ``npm i && npm start``
+
+# Attention
+
+Ce projet est réalisé dans un cadre scolaire (BTS SIO 1) est possède de **multiples failles de sécurités** qui permettent d'éxécuter du code arbitraire (notamment un RCE, *Remote Code Execution*, grâce à Node.js).
+
+Pour en savoir plus, voici une vidéo explicative sur le cas de **Microsoft Teams** [https://www.youtube.com/watch?v=K5WOkLaGS-E](https://www.youtube.com/watch?v=K5WOkLaGS-E).
+
+Ne pas utiliser ce programme en production
